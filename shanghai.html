@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>上海记忆·香氛诗篇 | 欧莱雅城市系列</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .city-header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1544984243-ec57ea16fe25?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .mbti-badge {
+            background: rgba(198, 167, 118, 0.8);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+            margin-left: 10px;
+        }
+        
+        .question-explanation {
+            font-size: 14px;
+            color: #999;
+            font-style: italic;
+            margin-top: 10px;
+        }
+        
+        .mbti-progress {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0 30px;
+            padding: 10px;
+            background-color: rgba(198, 167, 118, 0.05);
+            border-radius: 8px;
+        }
+        
+        .mbti-dimension {
+            text-align: center;
+        }
+        
+        .dimension-label {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .dimension-score {
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            color: #999;
+        }
+        
+        .score-bar {
+            width: 60px;
+            height: 6px;
+            background-color: #eee;
+            border-radius: 3px;
+            margin: 5px auto;
+            overflow: hidden;
+        }
+        
+        .score-fill {
+            height: 100%;
+            background-color: var(--loreal-gold);
+            width: 50%;
+        }
+        
+        .city-perfume-options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        @media (min-width: 768px) {
+            .city-perfume-options {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        .city-perfume-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .city-perfume-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .perfume-header {
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(198,167,118,0.1) 0%, rgba(245,245,247,1) 100%);
+            text-align: center;
+        }
+        
+        .perfume-icon {
+            font-size: 40px;
+            color: var(--loreal-gold);
+            margin-bottom: 15px;
+        }
+        
+        .perfume-mbti-tag {
+            display: inline-block;
+            background-color: rgba(198, 167, 118, 0.2);
+            color: var(--loreal-gold);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin: 10px 0;
+        }
+        
+        .perfume-notes {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+        }
+        
+        .perfume-note {
+            background-color: rgba(198, 167, 118, 0.1);
+            color: var(--loreal-gold);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+        
+        .perfume-description {
+            padding: 20px;
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .literary-quote {
+            font-style: italic;
+            color: var(--loreal-gold);
+            border-left: 2px solid var(--loreal-gold);
+            padding-left: 15px;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">
+            <i class="fas fa-arrow-left"></i>
+            <span>返回城市选择</span>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="#test-start" class="active">上海测试</a></li>
+                <li><a href="#perfumes">上海香氛</a></li>
+                <li><a href="#customize">定制购买</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="city-header">
+        <h1>上海记忆香氛定制</h1>
+        <p>通过5道题了解您的MBTI性格与城市偏好，推荐专属上海香氛</p>
+        <div class="city-tags">
+            <span>海派文化</span>
+            <span>石库门记忆</span>
+            <span>外滩晨雾</span>
+            <span>弄堂咖啡香</span>
+        </div>
+    </div>
+
+    <section class="city-test" id="test-start">
+        <div class="test-instructions">
+            <h2 class="section-title">上海记忆密码</h2>
+            <p class="section-subtitle">5道场景题，解码您与这座城市的独特联结</p>
+            
+            <div class="mbti-progress" id="mbtiProgress">
+                <div class="mbti-dimension">
+                    <div class="dimension-label">人群之中 / 自我之境</div>
+                    <div class="score-bar">
+                        <div class="score-fill" id="eiBar"></div>
+                    </div>
+                    <div class="dimension-score">
+                        <span>E</span>
+                        <span>I</span>
+                    </div>
+                </div>
+                
+                <div class="mbti-dimension">
+                    <div class="dimension-label">具象世界 / 抽象图景</div>
+                    <div class="score-bar">
+                        <div class="score-fill" id="snBar"></div>
+                    </div>
+                    <div class="dimension-score">
+                        <span>S</span>
+                        <span>N</span>
+                    </div>
+                </div>
+                
+                <div class="mbti-dimension">
+                    <div class="dimension-label">理性之光 / 感性之河</div>
+                    <div class="score-bar">
+                        <div class="score-fill" id="tfBar"></div>
+                    </div>
+                    <div class="dimension-score">
+                        <span>T</span>
+                        <span>F</span>
+                    </div>
+                </div>
+                
+                <div class="mbti-dimension">
+                    <div class="dimension-label">计划有序 / 灵感随行</div>
+                    <div class="score-bar">
+                        <div class="score-fill" id="jpBar"></div>
+                    </div>
+                    <div class="dimension-score">
+                        <span>J</span>
+                        <span>P</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="instructions-box">
+                <h3><i class="fas fa-info-circle"></i> 测试说明</h3>
+                <ul>
+                    <li>测试基于城市记忆与个性感知的微妙共振</li>
+                    <li>每个选择都在描绘您与上海的私人地图</li>
+                    <li>测试结果将为您匹配专属的城市嗅觉记忆</li>
+                    <li>同时发现欧莱雅旗下可能触动您的其他香气</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="test-progress">
+            <div class="progress-bar" id="progressBar"></div>
+            <div class="progress-text" id="progressText">第1/5题</div>
+        </div>
+        
+        <div id="questionContainer">
+            <div class="question" id="questionText"></div>
+            <div class="question-hint" id="questionHint"></div>
+            
+            <div class="options" id="optionsContainer"></div>
+        </div>
+        
+        <div class="test-navigation">
+            <button class="btn btn-outline" id="prevBtn">上一题</button>
+            <button class="btn" id="nextBtn">下一题</button>
+        </div>
+    </section>
+
+    <section class="results-container" id="resultsContainer" style="display: none;">
+        <div class="match-header">
+            <div class="city-back">
+                <a href="index.html">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>选择其他城市</span>
+                </a>
+            </div>
+            
+            <div class="result-city-badge">
+                <span class="city-badge">上海记忆系列</span>
+            </div>
+            
+            <div class="match-score">共鸣度<span id="matchScore">92</span>%</div>
+            <h2 id="resultTitle">为您匹配上海专属香氛</h2>
+            <p id="resultSubtitle">您的城市记忆画像：<span id="userMBTI" class="mbti-badge">INFJ</span></p>
+            
+            <div class="profile-tags" id="profileTags">
+                <!-- 动态生成 -->
+            </div>
+        </div>
+        
+        <!-- 上海城市香水展示 -->
+        <div class="city-perfume-options" id="shanghaiPerfumes">
+            <!-- 动态生成 -->
+        </div>
+        
+        <!-- 定制购买部分 -->
+        <div class="customization-section" id="customize">
+            <h3 class="section-title">个性化定制</h3>
+            
+            <div class="customization-options">
+                <div class="custom-option">
+                    <h4><i class="fas fa-edit"></i> 瓶身刻字服务</h4>
+                    <p>为您的香氛瓶添加专属文字（最多12个字符）</p>
+                    <div class="custom-input">
+                        <input type="text" id="engravingText" maxlength="12" placeholder="例如：上海记忆">
+                        <div class="input-hint">支持中文、英文、数字，刻字位置在瓶身底部</div>
+                    </div>
+                    <div class="preview-area">
+                        <div class="bottle-preview">
+                            <div class="bottle">
+                                <div class="bottle-neck"></div>
+                                <div class="bottle-body">
+                                    <div class="engraving-preview" id="engravingPreview">
+                                        <span>上海记忆</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="custom-option">
+                    <h4><i class="fas fa-gift"></i> 上海专属赠礼</h4>
+                    <p>推广期间，购买上海记忆系列可获赠限量城市主题赠品</p>
+                    <div class="gift-options">
+                        <div class="gift-option selected" data-gift="scent-card">
+                            <div class="gift-icon">
+                                <i class="fas fa-layer-group"></i>
+                            </div>
+                            <div class="gift-info">
+                                <h5>石库门香片</h5>
+                                <p>石库门建筑设计</p>
+                                <span class="gift-tag">限量赠品</span>
+                            </div>
+                        </div>
+                        
+                        <div class="gift-option" data-gift="diffuser-stone">
+                            <div class="gift-icon">
+                                <i class="fas fa-landmark"></i>
+                            </div>
+                            <div class="gift-info">
+                                <h5>外滩扩香石</h5>
+                                <p>外滩建筑群微缩造型，可持续使用</p>
+                                <span class="gift-tag">热门选择</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 购买部分 -->
+        <div class="purchase-section">
+            <div class="price-info">
+                <div class="original-price">原价 ¥ 880</div>
+                <div class="current-price">推广价 ¥ 699</div>
+                <div class="discount-note">包含：香氛(50ml) + 刻字服务 + 限量城市赠礼</div>
+            </div>
+            
+            <!-- 在现有的purchase-buttons区域添加分享按钮 -->
+<div class="purchase-buttons">
+    <button class="btn btn-outline" id="arButton">
+        <i class="fas fa-vr-cardboard"></i> AR试香体验
+    </button>
+    <button class="btn btn-share" id="shareButton">
+        <i class="fas fa-share-alt"></i> 分享我的香气
+    </button>
+    <button class="btn btn-primary" id="addToCartButton">
+        <i class="fas fa-shopping-cart"></i> 加入购物车
+    </button>
+</div>
+
+<!-- 分享弹窗（添加到页面底部，body结束前） -->
+<div class="share-modal" id="shareModal">
+    <div class="share-modal-content">
+        <div class="share-modal-header">
+            <h3><i class="fas fa-share-alt"></i> 分享我的上海香气</h3>
+            <span class="close-modal">&times;</span>
+        </div>
+        
+        <div class="share-modal-body">
+            <div class="share-preview">
+                <div class="share-card">
+                    <div class="share-card-header">
+                        <span class="share-badge">上海记忆系列</span>
+                        <span class="share-mbti" id="shareMBTI">INFJ</span>
+                    </div>
+                    <div class="share-card-body">
+                        <div class="share-perfume-info">
+                            <h4 id="sharePerfumeName">外滩晨雾</h4>
+                            <p class="share-perfume-desc" id="sharePerfumeDesc">捕捉外滩清晨江风里的理性与通透</p>
+                        </div>
+                        <div class="share-qr-code">
+                            <div class="qr-placeholder">
+                                <i class="fas fa-qrcode"></i>
+                            </div>
+                            <p>扫码体验完整测试</p>
+                        </div>
+                    </div>
+                    <div class="share-card-footer">
+                        <div class="share-tags" id="shareTags">
+                            <!-- 动态生成标签 -->
+                        </div>
+                        <div class="share-brand">
+                            <i class="fas fa-gem"></i> 欧莱雅城市记忆香氛
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="share-options">
+                <p class="share-hint">选择分享方式：</p>
+                <div class="share-platforms">
+                    <button class="share-platform wechat" data-platform="wechat">
+                        <i class="fab fa-weixin"></i>
+                        <span>微信好友</span>
+                    </button>
+                    <button class="share-platform moments" data-platform="moments">
+                        <i class="fab fa-weixin"></i>
+                        <span>朋友圈</span>
+                    </button>
+                    <button class="share-platform weibo" data-platform="weibo">
+                        <i class="fab fa-weibo"></i>
+                        <span>微博</span>
+                    </button>
+                    <button class="share-platform copy" data-platform="copy">
+                        <i class="fas fa-link"></i>
+                        <span>复制链接</span>
+                    </button>
+                </div>
+                
+                <div class="share-custom">
+                    <div class="share-textarea">
+                        <textarea id="shareText" readonly>发现我的上海香气诗篇，一起探索城市记忆与香氛的奇妙联结。</textarea>
+                        <button class="btn-copy" id="copyTextBtn">
+                            <i class="fas fa-copy"></i> 复制文案
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="share-modal-footer">
+            <p class="share-tip">
+                <i class="fas fa-info-circle"></i> 
+                分享后有机会获得上海限定香片体验装
+            </p>
+        </div>
+    </div>
+</div>
+        
+        <!-- 欧莱雅其他香水推荐 -->
+        <div class="related-products" id="perfumes">
+            <h3 class="section-title">根据您的MBTI类型推荐的其他香水</h3>
+            <p class="section-subtitle">欧莱雅旗下品牌，同样适合您的个性</p>
+            
+            <div class="product-grid" id="productGrid">
+                <!-- 动态生成 -->
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>上海记忆系列</h4>
+                <p>基于MBTI人格类型与上海城市记忆的香氛定制</p>
+                <p>每款香水对应特定性格类型的城市体验</p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>MBTI与香氛匹配</h4>
+                <ul>
+                    <li>外向型(E)：社交型香氛</li>
+                    <li>直觉型(N)：创意型香氛</li>
+                    <li>情感型(F)：感性型香氛</li>
+                    <li>判断型(J)：结构型香氛</li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>探索其他城市</h4>
+                <div class="other-cities">
+                    <a href="beijing.html">北京记忆</a>
+                    <a href="guangzhou.html">广州记忆</a>
+                    <a href="shenzhen.html">深圳记忆</a>
+                    <a href="hongkong.html">香港记忆</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2023 欧莱雅集团 - 城市记忆香氛定制项目 | 基于MBTI人格类型分析</p>
+        </div>
+    </footer>
+
+    <script src="shanghai.js"></script>
+</body>
+</html>
