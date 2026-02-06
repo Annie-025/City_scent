@@ -35,14 +35,487 @@ body {
 }
 
 /* 头部样式 */
+/* 在文件的头部样式部分找到header部分，修改如下 */
+
+/* 修改头部样式部分 */
+
+/* 头部样式 - 重新设计 */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 0;
+    padding: 25px 0;
     border-bottom: 1px solid #eee;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
+/* 左侧部分包含logo和语言切换按钮 */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex: 1;
+    min-width: 300px;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 28px;
+    color: var(--loreal-black);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo i {
+    color: var(--loreal-gold);
+}
+
+/* 语言切换按钮样式 - 放在logo旁边 */
+.language-switcher {
+    display: flex;
+    align-items: center;
+}
+
+.btn-language {
+    background-color: transparent;
+    border: 1px solid var(--loreal-gold);
+    color: var(--loreal-gold);
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.btn-language:hover {
+    background-color: var(--loreal-gold);
+    color: var(--loreal-white);
+}
+
+/* 头部样式 - 重新设计 */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 0;
+    border-bottom: 1px solid #eee;
+    position: relative;
+}
+
+/* 左侧部分包含logo和语言切换按钮 */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 28px;
+    color: var(--loreal-black);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo i {
+    color: var(--loreal-gold);
+}
+
+/* 语言切换按钮样式 - 放在logo旁边 */
+.language-switcher {
+    display: flex;
+    align-items: center;
+}
+
+.btn-language {
+    background-color: transparent;
+    border: 1px solid var(--loreal-gold);
+    color: var(--loreal-gold);
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.btn-language:hover {
+    background-color: var(--loreal-gold);
+    color: var(--loreal-white);
+}
+
+/* 首页的语言切换按钮样式 */
+header .btn-language {
+    border: 1px solid var(--loreal-black);
+    color: var(--loreal-black);
+}
+
+header .btn-language:hover {
+    background-color: var(--loreal-black);
+    color: var(--loreal-white);
+}
+
+/* 导航栏移到中间 */
+nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--loreal-dark-gray);
+    font-weight: 500;
+    font-size: 16px;
+    transition: var(--transition);
+    white-space: nowrap;
+}
+
+nav a:hover, nav .active {
+    color: var(--loreal-gold);
+}
+
+/* 响应式调整 */
+@media (max-width: 1024px) {
+    nav ul {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px 0;
+    }
+    
+    .header-left {
+        width: 100%;
+        justify-content: space-between;
+        gap: 15px;
+    }
+    
+    nav {
+        position: static;
+        left: auto;
+        transform: none;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+    
+    nav a {
+        font-size: 15px;
+    }
+    
+    .logo {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    nav ul {
+        gap: 10px;
+    }
+    
+    nav a {
+        font-size: 14px;
+    }
+    
+    .btn-language {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+}
+/* 首页的语言切换按钮样式 */
+header .btn-language {
+    border: 1px solid var(--loreal-black);
+    color: var(--loreal-black);
+}
+
+header .btn-language:hover {
+    background-color: var(--loreal-black);
+    color: var(--loreal-white);
+}
+
+/* 响应式调整 - 针对平板 */
+@media (max-width: 992px) {
+    header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+        padding: 20px 0;
+    }
+    
+    .header-left {
+        justify-content: center;
+        width: 100%;
+    }
+    
+    nav {
+        justify-content: center;
+        width: 100%;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    nav ul {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    
+    .language-switcher {
+        margin-left: 0;
+        margin-top: 5px;
+        justify-content: center;
+        width: 100%;
+    }
+}
+
+/* 响应式调整 - 针对手机 */
+@media (max-width: 768px) {
+    .logo {
+        font-size: 24px;
+    }
+    
+    nav ul {
+        gap: 15px;
+    }
+    
+    nav a {
+        font-size: 14px;
+    }
+    
+    .btn-language {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    nav ul {
+        gap: 10px;
+    }
+    
+    nav a {
+        font-size: 13px;
+    }
+    
+    .btn-language {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+}
+
+.btn-language:hover {
+    background-color: var(--loreal-gold);
+    color: var(--loreal-white);
+}
+
+/* 首页的语言切换按钮样式 */
+header .btn-language {
+    border: 1px solid var(--loreal-black);
+    color: var(--loreal-black);
+}
+
+header .btn-language:hover {
+    background-color: var(--loreal-black);
+    color: var(--loreal-white);
+}
+
+/* 双语文本切换 */
+[data-lang] {
+    transition: opacity 0.3s ease;
+}
+
+/* 确保导航中的双语文本正确显示 */
+nav li a[data-lang],
+nav li span[data-lang] {
+    display: inline;
+}
+
+/* 响应式调整 */
+@media (max-width: 1024px) {
+    .header-left {
+        min-width: 250px;
+    }
+    
+    nav ul {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        padding: 20px 0;
+    }
+    
+    .header-left {
+        width: 100%;
+        justify-content: space-between;
+        min-width: auto;
+        gap: 15px;
+    }
+    
+    nav {
+        width: 100%;
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 10px;
+    }
+    
+    nav ul {
+        gap: 15px;
+        min-width: max-content;
+    }
+    
+    nav a {
+        font-size: 15px;
+    }
+    
+    .logo {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-left {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .language-switcher {
+        align-self: flex-start;
+    }
+    
+    nav ul {
+        gap: 10px;
+    }
+    
+    nav a {
+        font-size: 14px;
+    }
+    
+    .btn-language {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+}
+
+.btn-language:hover {
+    background-color: var(--loreal-gold);
+    color: var(--loreal-white);
+}
+
+/* 首页导航中的语言切换按钮样式 */
+nav .btn-language {
+    border: 1px solid var(--loreal-black);
+    color: var(--loreal-black);
+}
+
+nav .btn-language:hover {
+    background-color: var(--loreal-black);
+    color: var(--loreal-white);
+}
+
+/* 双语文本切换 */
+[data-lang] {
+    transition: opacity 0.3s ease;
+}
+
+/* 确保导航中的双语文本正确显示 */
+nav li a[data-lang],
+nav li span[data-lang] {
+    display: inline;
+}
+
+/* 响应式调整 */
+@media (max-width: 992px) {
+    header {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    .logo {
+        justify-content: center;
+        width: 100%;
+    }
+    
+    nav {
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+    }
+    
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+    
+    .language-switcher {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        gap: 15px;
+    }
+    
+    nav a {
+        font-size: 14px;
+    }
+    
+    .btn-language {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    nav ul {
+        gap: 10px;
+    }
+    
+    nav a {
+        font-size: 13px;
+    }
+    
+    .logo {
+        font-size: 24px;
+    }
+}
 .logo {
     font-weight: 700;
     font-size: 28px;
@@ -211,19 +684,9 @@ nav a:hover, nav .active {
                       url('https://images.unsplash.com/photo-1544984243-ec57ea16fe25?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
 }
 
-.beijing-img {
+.newyork-img {
     background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), 
-                      url('https://images.unsplash.com/photo-1590674899484-d5640e854abe?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
-}
-
-.guangzhou-img {
-    background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), 
-                      url('https://images.unsplash.com/photo-1591872209665-54d15c2b6b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
-}
-
-.shenzhen-img {
-    background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), 
-                      url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+                      url('https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
 }
 
 .hongkong-img {
@@ -1523,4 +1986,207 @@ footer {
 #welcomeContainer {
     position: relative;
     z-index: 1;
+}
+/* 在文件末尾添加以下样式 */
+
+/* 双语切换相关样式 */
+.language-switcher {
+    position: absolute;
+    top: 30px;
+    right: 20px;
+    z-index: 100;
+}
+
+.btn-language {
+    background-color: transparent;
+    border: 1px solid var(--loreal-gold);
+    color: var(--loreal-gold);
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.btn-language:hover {
+    background-color: var(--loreal-gold);
+    color: var(--loreal-white);
+}
+
+/* 首页语言切换按钮样式 */
+header .btn-language {
+    border: 1px solid var(--loreal-black);
+    color: var(--loreal-black);
+}
+
+header .btn-language:hover {
+    background-color: var(--loreal-black);
+    color: var(--loreal-white);
+}
+
+/* 双语文本切换 */
+[data-lang] {
+    transition: opacity 0.3s ease;
+}
+
+/* 确保导航中的双语文本正确显示 */
+nav li a[data-lang],
+nav li span[data-lang] {
+    display: inline;
+}
+
+/* 城市标签的双语支持 */
+.city-tags span[data-lang] {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* 技术标签的双语支持 */
+.tech-tag[data-lang] {
+    display: inline-block;
+    background-color: rgba(198, 167, 118, 0.1);
+    color: var(--loreal-gold);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .language-switcher {
+        position: static;
+        margin-top: 10px;
+        text-align: center;
+    }
+    
+    header {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+}
+/* 在文件末尾添加或修改以下样式 */
+
+/* 双语切换相关样式 */
+.language-switcher {
+    margin-left: 30px;
+}
+
+.btn-language {
+    background-color: transparent;
+    border: 1px solid var(--loreal-gold);
+    color: var(--loreal-gold);
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.btn-language:hover {
+    background-color: var(--loreal-gold);
+    color: var(--loreal-white);
+}
+
+/* 首页语言切换按钮样式 */
+nav .btn-language {
+    border: 1px solid var(--loreal-black);
+    color: var(--loreal-black);
+}
+
+nav .btn-language:hover {
+    background-color: var(--loreal-black);
+    color: var(--loreal-white);
+}
+
+/* 调整导航栏布局以容纳语言切换按钮 */
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+/* 双语文本切换 */
+[data-lang] {
+    transition: opacity 0.3s ease;
+}
+
+/* 确保导航中的双语文本正确显示 */
+nav li a[data-lang],
+nav li span[data-lang] {
+    display: inline;
+}
+
+/* 城市标签的双语支持 */
+.city-tags span[data-lang] {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* 技术标签的双语支持 */
+.tech-tag[data-lang] {
+    display: inline-block;
+    background-color: rgba(198, 167, 118, 0.1);
+    color: var(--loreal-gold);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+        padding: 20px 0;
+    }
+    
+    nav {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+    }
+    
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+    
+    .language-switcher {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+}
+
+/* 在小屏幕上，调整语言切换按钮大小 */
+@media (max-width: 480px) {
+    .btn-language {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+    
+    nav ul {
+        gap: 10px;
+    }
 }

@@ -1,57 +1,57 @@
-// shanghai.js - 上海记忆香氛定制（二维人格系统 + 双语支持）
+// newyork.js - 纽约记忆香氛定制（二维人格系统 + 双语支持 + 百老汇文化元素）
 
 // 双语文本数据
-const translations = {
+const newYorkTranslations = {
     en: {
         // 导航和标题
         "backToCities": "Back to Cities",
         "home": "Home",
-        "shanghaiTest": "Shanghai Test",
+        "newyorkTest": "New York Test",
         "perfumes": "Perfumes",
         "customize": "Customize",
         "languageToggle": "中",
         
         // 页面标题
-        "pageTitle": "Shanghai Memory · Fragrance Poem | L'Oréal City Series",
-        "cityTitle": "Shanghai Memory Fragrance Customization",
-        "citySubtitle": "Discover your Shanghai scent story through 5 questions",
-        "testTitle": "Shanghai Memory Code",
-        "testSubtitle": "5 questions to decode your unique connection with this city",
+        "pageTitle": "New York Memory · Grid Dreams | L'Oréal City Series",
+        "cityTitle": "New York Memory Fragrance Customization",
+        "citySubtitle": "Discover your New York scent story through 5 questions",
+        "testTitle": "New York Grid Dreams",
+        "testSubtitle": "5 questions to decode your unique connection with this city that never sleeps",
         
         // 测试说明
         "testInstructionsTitle": "Test Instructions",
-        "testInstructions1": "Test based on the subtle resonance between city memory and personal perception",
-        "testInstructions2": "Each choice draws your private map of Shanghai",
-        "testInstructions3": "Results will match you with a unique city olfactory memory",
+        "testInstructions1": "Test based on spatial order and dream resonance in New York",
+        "testInstructions2": "Each choice maps your personal grid in the steel forest",
+        "testInstructions3": "Results will match you with a unique urban olfactory memory",
         "testInstructions4": "Discover other L'Oréal fragrances that might resonate with you",
         
         // 人格类型描述
         "historical_surveyor": {
             "name": "Historical Surveyor",
-            "description": "Measuring with footsteps, recording with drawings, mapping the city's living cultural geography through street textures and landmark transitions.",
-            "quote": "Precise as an architect's blueprint, reconstructing a city's rational skeleton through grids and scales."
+            "description": "Mapping the city's rational skeleton through grids and scales, measuring the pulse of urban development with architectural precision.",
+            "quote": "Like the Manhattan grid plan itself, finding order in the chaos of urban evolution."
         },
         "soul_archaeologist": {
             "name": "Soul Archaeologist",
-            "description": "Not deceived by appearances, delving into the city's folds and hidden layers, excavating forgotten memories, emotions, and collective subconscious.",
-            "quote": "Like archaeology in the city's memory strata, each layer is an emotional fossil buried by time."
+            "description": "Delving beneath the glittering surface to excavate forgotten immigrant stories, underground cultures, and the city's collective subconscious.",
+            "quote": "In the basements of old tenements, the city whispers its secrets to those who listen."
         },
         "eternal_wanderer": {
             "name": "Eternal Wanderer",
-            "description": "No permanent dwelling, seeing the journey itself as home. Finding the 'in-between' state and flowing scenery in docks, stations, and cross-border trains.",
-            "quote": "The sound of a suitcase closing is the prelude to another departure."
+            "description": "Finding home in perpetual transit, carrying the world in a suitcase through ports, stations, and the spaces between cultures.",
+            "quote": "The subway's rumbling rhythm is the city's heartbeat, and my constant companion."
         },
         "dreamweaver": {
             "name": "Dreamweaver",
-            "description": "Covering the city with a soft-focus filter of imagination, constructing parallel space-time romances, legends, and fairy tales on reality's foundation.",
-            "quote": "Every wisp of fragrance is an unfinished story, waiting to be continued in dreams."
+            "description": "Overlaying reality with Broadway spotlights and Gatsby-esque fantasies, constructing parallel New Yorks where dreams never fade.",
+            "quote": "Every corner of this city is a stage, waiting for its story to be told."
         },
         
         // 香水描述
-        "perfume1_desc": "Born for Historical Surveyors. Capturing the precise lines and temporal imprints of the Bund architecture, like 1920s surveyors measuring the city's texture with footsteps.",
-        "perfume2_desc": "Customized for Soul Archaeologists. Delving into Shanghai's forgotten folds, excavating the damp memories and collective subconscious before creek burial.",
-        "perfume3_desc": "Prepared for Eternal Wanderers. No permanent home, only a perpetual travel trunk filled with concession memories and next-stop sea breezes.",
-        "perfume4_desc": "Created for Dreamweavers. Layering Shanghai's reality with a soft-focus filter, constructing parallel space-time and unfinished legends like the Peach Blossom Fan.",
+        "perfume1_desc": "For Historical Surveyors. Capturing the precision of the Manhattan grid with quill ink, parchment, and the scent of upturned earth where dreams were first planned.",
+        "perfume2_desc": "For Soul Archaeologists. Excavating the layered memories of Five Points: old brick soaked with rain, basement whiskey, and the enduring scent of hope.",
+        "perfume3_desc": "For Eternal Wanderers. The misty anticipation of Ellis Island, leather suitcases, multilingual whispers, and the warm breath of new beginnings.",
+        "perfume4_desc": "For Dreamweavers. The morning dew on Gatsby's lawn, champagne bubbles, freshly cut grass, and the lingering melancholy of a party that never truly ends.",
         
         // 按钮文本
         "prevQuestion": "Previous",
@@ -65,7 +65,7 @@ const translations = {
         "recommendedForYou": "✓ Recommended for you",
         "matchScore": "Match Score",
         "personalization": "Personalization",
-        "engravingHint": "e.g.: Shanghai Memory",
+        "engravingHint": "e.g.: NYC Dreams",
         "yourCityExplorerType": "Your City Explorer Type:",
         "forYou": "For you:"
     },
@@ -74,52 +74,52 @@ const translations = {
         // 导航和标题
         "backToCities": "返回城市选择",
         "home": "首页",
-        "shanghaiTest": "上海测试",
-        "perfumes": "上海香氛",
+        "newyorkTest": "纽约测试",
+        "perfumes": "纽约香氛",
         "customize": "定制购买",
         "languageToggle": "EN",
         
         // 页面标题
-        "pageTitle": "上海记忆·香氛诗篇 | 欧莱雅城市系列",
-        "cityTitle": "上海记忆香氛定制",
-        "citySubtitle": "通过5道题了解您与上海的独特联结，推荐专属香氛",
-        "testTitle": "上海记忆密码",
-        "testSubtitle": "5道场景题，解码您与这座城市的独特联结",
+        "pageTitle": "纽约记忆·网格梦想 | 欧莱雅城市系列",
+        "cityTitle": "纽约记忆香氛定制",
+        "citySubtitle": "通过5道题了解您与纽约的独特联结，推荐专属香氛",
+        "testTitle": "纽约网格梦想",
+        "testSubtitle": "5道场景题，解码您与这座不眠之城的独特联结",
         
         // 测试说明
         "testInstructionsTitle": "测试说明",
-        "testInstructions1": "测试基于城市记忆与个性感知的微妙共振",
-        "testInstructions2": "每个选择都在描绘您与上海的私人地图",
-        "testInstructions3": "测试结果将为您匹配专属的城市嗅觉记忆",
+        "testInstructions1": "基于纽约的空间秩序与梦想共鸣",
+        "testInstructions2": "每个选择都在钢铁森林中描绘您的个人网格",
+        "testInstructions3": "测试结果将为您匹配专属的都市嗅觉记忆",
         "testInstructions4": "同时发现欧莱雅旗下可能触动您的其他香气",
         
         // 人格类型描述
         "historical_surveyor": {
             "name": "历史测绘者",
-            "description": "用脚步丈量、用图纸记录，在街巷的肌理与地标的更迭中，绘制出一幅活的城市人文地图。",
-            "quote": "严谨如建筑师的手稿，在网格与尺度间，重构一座城市的理性骨架。"
+            "description": "通过网格与尺度绘制城市的理性骨架，用建筑的精准度测量城市发展的脉搏。",
+            "quote": "如同曼哈顿的网格规划，在城市的进化混沌中寻找秩序。"
         },
         "soul_archaeologist": {
             "name": "心灵考古者",
-            "description": "不被表象迷惑，深入城市的褶皱与暗层，挖掘被遗忘的记忆、情感与集体潜意识。",
-            "quote": "像在城市的记忆断层中考古，每一层都是被时间掩埋的情感化石。"
+            "description": "深入光鲜表面之下，挖掘被遗忘的移民故事、地下文化和这座城市的集体潜意识。",
+            "quote": "在老式公寓的地下室里，城市向倾听者低语它的秘密。"
         },
         "eternal_wanderer": {
             "name": "永恒漂泊者",
-            "description": "没有永恒的居所，将旅途本身视为归宿。在码头、驿站与跨境列车上，寻找'之间'的状态与流动的风景。",
-            "quote": "行李箱合上的声音，是又一次出发的序曲。"
+            "description": "在永续的流动中找到归宿，通过港口、车站和文化之间的空间，将世界装进行李箱。",
+            "quote": "地铁的隆隆节奏是这座城市的心跳，也是我永恒的伴侣。"
         },
         "dreamweaver": {
             "name": "旧时梦境师",
-            "description": "用想象力为城市覆上柔光滤镜，在现实的地基上构筑平行时空的浪漫故事、传奇与童话。",
-            "quote": "每一缕香气都是一个未讲完的故事，等待在梦境中续写。"
+            "description": "用百老汇的聚光灯和盖茨比式的幻想覆盖现实，构筑梦想永不褪色的平行纽约。",
+            "quote": "这座城市的每个角落都是一个舞台，等待着它的故事被讲述。"
         },
         
         // 香水描述
-        "perfume1_desc": "为历史测绘者而生。捕捉外滩建筑群的精确线条与时间印记，如1920年代测绘师用脚步丈量城市肌理。",
-        "perfume2_desc": "为心灵考古者定制。深入上海被遗忘的褶皱，挖掘河浜填埋前的潮湿记忆与集体潜意识。",
-        "perfume3_desc": "为永恒漂泊者准备。没有永恒的居所，只有永在途中的旅行箱，装满租界记忆与下一站的海风。",
-        "perfume4_desc": "为旧时梦境师创造。在现实上海之上覆一层柔光滤镜，构筑桃花扇般的平行时空与未竟传奇。",
+        "perfume1_desc": "为历史测绘者而生。用鹅毛笔、羊皮纸和规划之初翻起的泥土气息，捕捉曼哈顿网格的精准。",
+        "perfume2_desc": "为心灵考古者定制。挖掘五点区的层积记忆：雨水浸泡的老砖墙、地下室的威士忌酒渍，以及希望的不灭气息。",
+        "perfume3_desc": "为永恒漂泊者准备。埃利斯岛的雾色期待、皮革行李箱、多语言的低语呢喃，与新开始的温暖呼吸。",
+        "perfume4_desc": "为旧时梦境师创造。盖茨比草坪上的晨露、香槟气泡、新鲜修剪的草香，以及一场永不真正结束的派对的淡淡怅惘。",
         
         // 按钮文本
         "prevQuestion": "上一题",
@@ -133,187 +133,187 @@ const translations = {
         "recommendedForYou": "✓ 为您推荐",
         "matchScore": "共鸣度",
         "personalization": "个性化定制",
-        "engravingHint": "例如：上海记忆",
+        "engravingHint": "例如：纽约梦想",
         "yourCityExplorerType": "您的城市漫游者类型：",
         "forYou": "为您推荐："
     }
 };
 
-// 上海专属测试问题 - 5道题，基于二维人格系统
-const shanghaiQuestions = {
+// 纽约专属测试问题 - 5道题，基于二维人格系统，融入百老汇、汉密尔顿、中央公园等文化元素
+const newyorkQuestions = {
     en: [
         {
             id: 1,
-            text: "On a weekend afternoon in Shanghai, how would you prefer to spend your time?",
-            hint: "Leisure activities in the city reflect different life rhythms",
+            text: "When experiencing New York's theater district, what draws you most?",
+            hint: "Broadway reflects different aspects of the city's soul",
             options: [
                 { 
-                    text: "Attend an art exhibition opening, mingle with curators and artists", 
-                    icon: "🎨",
-                    score: { connection: -1, interaction: 1 },
-                    personality: "dreamweaver",
-                    explanation: "Feeling the pulse of culture amidst art and people's whispers"
-                },
-                { 
-                    text: "Read in a quiet café, occasionally observing passersby outside", 
-                    icon: "📖",
-                    score: { connection: 1, interaction: -1 },
-                    personality: "soul_archaeologist",
-                    explanation: "A corner by the window, where pages and coffee aroma weave quiet poetry"
-                },
-                { 
-                    text: "Explore hidden boutiques in alleyways, discover unique local designs", 
-                    icon: "🔍",
-                    score: { connection: -1, interaction: -1 },
-                    personality: "eternal_wanderer",
-                    explanation: "Delving into urban texture, discovering unique patterns and stories in hidden places"
-                },
-                { 
-                    text: "Gather with friends on The Bund terrace, enjoying the city skyline", 
-                    icon: "👥",
+                    text: "The historical architecture and precise stage mechanics of classic theaters", 
+                    icon: "🏛️",
                     score: { connection: 1, interaction: 1 },
                     personality: "historical_surveyor",
-                    explanation: "Sharing with friends from a height, letting the skyline become the backdrop"
+                    explanation: "Appreciating the structural integrity and historical engineering behind the spectacle"
+                },
+                { 
+                    text: "The raw emotion and untold immigrant stories in shows like 'Hamilton'", 
+                    icon: "🎭",
+                    score: { connection: 1, interaction: -1 },
+                    personality: "soul_archaeologist",
+                    explanation: "Drawn to the revolutionary spirit and layered narratives of America's founding"
+                },
+                { 
+                    text: "The backstage chaos and touring lifestyle of traveling productions", 
+                    icon: "🎪",
+                    score: { connection: -1, interaction: -1 },
+                    personality: "eternal_wanderer",
+                    explanation: "Fascinated by the transient nature and nomadic reality of theater life"
+                },
+                { 
+                    text: "The glittering fantasy and transformative power of musical theater", 
+                    icon: "✨",
+                    score: { connection: -1, interaction: 1 },
+                    personality: "dreamweaver",
+                    explanation: "Captivated by the escapism and romantic possibilities of Broadway dreams"
                 }
             ]
         },
         {
             id: 2,
-            text: "When you hear 'Shanghai scent', what comes to mind first?",
-            hint: "Olfactory memories are like old photos - some capture moments, others unfold scrolls",
+            text: "In Central Park, where do you find your perfect New York moment?",
+            hint: "The park is a microcosm of the city's contrasts",
             options: [
                 { 
-                    text: "Morning coffee and fried dough aroma drifting from alleyways", 
-                    icon: "☕",
-                    score: { connection: 1, interaction: -1 },
-                    personality: "soul_archaeologist",
-                    explanation: "The morning alleyway's smoke and fire, this city's most authentic warmth"
-                },
-                { 
-                    text: "Time-aged wood scent and storytelling in Shikumen houses", 
-                    icon: "🏛️",
+                    text: "Studying the Frederick Law Olmsted's original park plans at the Conservatory Garden", 
+                    icon: "🗺️",
                     score: { connection: 1, interaction: 1 },
                     personality: "historical_surveyor",
-                    explanation: "Time settles in wood grain, scent hides unfinished past stories"
+                    explanation: "Analyzing the intentional design of America's first landscaped public park"
                 },
                 { 
-                    text: "Fresh air and modernity brought by The Bund river breeze", 
-                    icon: "💨",
-                    score: { connection: -1, interaction: 1 },
-                    personality: "dreamweaver",
-                    explanation: "River breeze brings not only freshness but also breaths of old and new transitions"
-                },
-                { 
-                    text: "Mixed floral and coffee scents under plane trees in French Concession", 
+                    text: "Finding quiet corners where the city's history whispers through old trees", 
                     icon: "🌳",
+                    score: { connection: 1, interaction: -1 },
+                    personality: "soul_archaeologist",
+                    explanation: "Listening to the park's hidden stories in its oldest, most tranquil spaces"
+                },
+                { 
+                    text: "Watching the constant flow of joggers, carriages, and tourists at Bethesda Terrace", 
+                    icon: "🚶‍♀️",
                     score: { connection: -1, interaction: -1 },
                     personality: "eternal_wanderer",
-                    explanation: "Under plane trees, floral and coffee scents weave a wordless melody"
+                    explanation: "Observing the park as a crossroads of endless human movement and stories"
+                },
+                { 
+                    text: "Imagining romantic movie scenes and fictional encounters at Bow Bridge", 
+                    icon: "💖",
+                    score: { connection: -1, interaction: 1 },
+                    personality: "dreamweaver",
+                    explanation: "Seeing the park through a cinematic lens of romantic possibilities"
                 }
             ]
         },
         {
             id: 3,
-            text: "When planning a Shanghai travel route, which approach do you prefer?",
-            hint: "Some prefer following maps, others prefer wandering freely - each has its own comfort",
+            text: "How do you navigate the Manhattan grid?",
+            hint: "The city's layout reflects different ways of moving through life",
             options: [
                 { 
-                    text: "Thorough research: exact times, subway transfers, even restaurant reservations", 
-                    icon: "📋",
+                    text: "By exact coordinates - cross streets, subway lines, and efficient routes", 
+                    icon: "📍",
                     score: { connection: 1, interaction: 1 },
                     personality: "historical_surveyor",
-                    explanation: "Judgment types outline journeys with precise lines, making every moment just right"
+                    explanation: "Mastering the mathematical precision of New York's most famous feature"
                 },
                 { 
-                    text: "General direction known, details left to chance, surprises often in blank spaces", 
+                    text: "By neighborhood histories and ethnic enclaves - Little Italy, Chinatown, etc.", 
+                    icon: "🏙️",
+                    score: { connection: 1, interaction: 1 },
+                    personality: "historical_surveyor",
+                    explanation: "Navigating through layers of immigrant history embedded in the grid"
+                },
+                { 
+                    text: "By following crowds, intuition, and unexpected discoveries off the main avenues", 
                     icon: "🧭",
                     score: { connection: -1, interaction: -1 },
                     personality: "eternal_wanderer",
-                    explanation: "Surprises often in blank spaces, letting footsteps follow intuition"
+                    explanation: "Embracing the spontaneous flow of the city beyond its rigid structure"
                 },
                 { 
-                    text: "Research historical cultural background, plan routes by theme", 
-                    icon: "📚",
-                    score: { connection: 1, interaction: 1 },
-                    personality: "historical_surveyor",
-                    explanation: "Weaving deep exploration along historical and cultural coordinates"
-                },
-                { 
-                    text: "Ask local friends for recommendations, follow intuition", 
-                    icon: "💡",
+                    text: "By emotional landmarks - a favorite bookstore, a memorable restaurant, a view", 
+                    icon: "❤️",
                     score: { connection: -1, interaction: -1 },
                     personality: "eternal_wanderer",
-                    explanation: "Capturing the city's freshest aspects from locals' perspectives"
+                    explanation: "Mapping the city through personal connections rather than coordinates"
                 }
             ]
         },
         {
             id: 4,
-            text: "When choosing Shanghai souvenirs for friends, what matters most?",
-            hint: "Choosing meaningful gifts shows understanding of both friend and Shanghai",
+            text: "What aspect of New York's immigrant history resonates most with you?",
+            hint: "The city's soul is built on layers of arrival and reinvention",
             options: [
                 { 
-                    text: "Product practicality, quality, and design aesthetics", 
-                    icon: "🎁",
+                    text: "The architectural legacy and infrastructure built by immigrant labor", 
+                    icon: "🏗️",
                     score: { connection: -1, interaction: 1 },
                     personality: "dreamweaver",
-                    explanation: "Design enduring time's gaze, carrying sentiment with eternal beauty"
+                    explanation: "Admiring the tangible achievements that transformed the skyline"
                 },
                 { 
-                    text: "Emotional value and unique stories behind souvenirs", 
-                    icon: "❤️",
+                    text: "The personal diaries and letters from Ellis Island arrivals", 
+                    icon: "✉️",
                     score: { connection: 1, interaction: -1 },
                     personality: "soul_archaeologist",
-                    explanation: "The warmth and story behind objects are more precious than objects themselves"
+                    explanation: "Touched by intimate stories of hope, fear, and new beginnings"
                 },
                 { 
-                    text: "Whether it reflects Shanghai characteristics and cultural representation", 
-                    icon: "🏮",
+                    text: "The preservation of cultural traditions in ethnic neighborhoods", 
+                    icon: "🌍",
                     score: { connection: 1, interaction: 1 },
                     personality: "historical_surveyor",
-                    explanation: "What can carry a city's spiritual essence is true commemoration"
+                    explanation: "Valuing the systematic maintenance of heritage within the urban fabric"
                 },
                 { 
-                    text: "Friend's personal preferences and personality match", 
-                    icon: "👤",
+                    text: "The constant reinvention of self that defines the New York experience", 
+                    icon: "🦋",
                     score: { connection: -1, interaction: -1 },
                     personality: "eternal_wanderer",
-                    explanation: "Most precious gift understands a person like understanding a poem"
+                    explanation: "Relating to the perpetual transformation inherent to the city's identity"
                 }
             ]
         },
         {
             id: 5,
-            text: "In what scenario do you hope to use this fragrance?",
-            hint: "Scent like an intimate partner tells different stories in different contexts",
+            text: "When do you feel most connected to New York's energy?",
+            hint: "The city's pulse beats differently in different moments",
             options: [
                 { 
-                    text: "Work hours, in Lujiazui office buildings, maintaining clarity and focus", 
-                    icon: "🏙️",
+                    text: "During morning rush hour in Grand Central Terminal", 
+                    icon: "🕗",
                     score: { connection: 1, interaction: 1 },
                     personality: "historical_surveyor",
-                    explanation: "Like Lujiazui's first pour-over coffee, scent is rational thought's warp and weft, weaving concentration's web at the desk"
+                    explanation: "Feeling the city's organized chaos and precise timing at its peak efficiency"
                 },
                 { 
-                    text: "Home relaxation, in old apartments near Sinan Mansions, reading or listening to music", 
-                    icon: "🕰️",
+                    text: "Late at night in a jazz club in Greenwich Village", 
+                    icon: "🎷",
                     score: { connection: 1, interaction: -1 },
                     personality: "soul_archaeologist",
-                    explanation: "Sinan Mansions' old window filters afternoon sun, scent is breathing while turning pages, gently marking private time's folds"
+                    explanation: "Connecting with the city's artistic soul in its most intimate, underground spaces"
                 },
                 { 
-                    text: "Social occasions, in Wukang Road or Anfu Road shops, chatting with friends", 
-                    icon: "🌉",
+                    text: "At sunset on the Staten Island Ferry, watching the skyline recede", 
+                    icon: "⛴️",
                     score: { connection: -1, interaction: -1 },
                     personality: "eternal_wanderer",
-                    explanation: "Between whispers in Wukang Road cafes, scent is unspoken subtext, flowing gently where cup rims and glances intersect"
+                    explanation: "Experiencing the bittersweet beauty of temporary departure and return"
                 },
                 { 
-                    text: "Late night solitude, in home study or bedroom, reflection or creative private time", 
-                    icon: "🌿",
+                    text: "At dawn in Times Square after the crowds have thinned", 
+                    icon: "🌅",
                     score: { connection: -1, interaction: 1 },
                     personality: "dreamweaver",
-                    explanation: "In desk lamp's glow in late night study, scent is thought's compass, guiding inspiration to find its flow in quiet"
+                    explanation: "Seeing the city's most famous spectacle transformed by morning light and quiet"
                 }
             ]
         }
@@ -321,215 +321,215 @@ const shanghaiQuestions = {
     zh: [
         {
             id: 1,
-            text: "在上海的一个周末下午，您更倾向于如何度过？",
-            hint: "城市中的休憩方式，折射出不同的生命节奏",
+            text: "体验纽约剧院区时，什么最吸引您？",
+            hint: "百老汇反映了城市灵魂的不同面向",
             options: [
                 { 
-                    text: "参加艺术展览开幕酒会，与策展人和艺术家交流", 
-                    icon: "🎨",
-                    score: { connection: -1, interaction: 1 },
-                    personality: "dreamweaver",
-                    explanation: "在艺术气息与人群的低语中，感受文化脉搏的跳动"
-                },
-                { 
-                    text: "在安静的咖啡馆阅读，偶尔观察窗外的行人", 
-                    icon: "📖",
-                    score: { connection: 1, interaction: -1 },
-                    personality: "soul_archaeologist",
-                    explanation: "窗边的一隅，书页与咖啡香交织成安静的诗篇"
-                },
-                { 
-                    text: "探索弄堂里的隐藏小店，发现独特的本地设计", 
-                    icon: "🔍",
-                    score: { connection: -1, interaction: -1 },
-                    personality: "eternal_wanderer",
-                    explanation: "深入城市肌理，在隐秘处发现独特的纹理与故事"
-                },
-                { 
-                    text: "与朋友在外滩露台聚会，享受城市天际线", 
-                    icon: "👥",
+                    text: "经典剧院的历史建筑和精确的舞台机械", 
+                    icon: "🏛️",
                     score: { connection: 1, interaction: 1 },
                     personality: "historical_surveyor",
-                    explanation: "在高处与友同享，让天际线成为欢聚的背景画"
+                    explanation: "欣赏奇观背后的结构完整性和历史工程"
+                },
+                { 
+                    text: "《汉密尔顿》等剧中原始的情感和未讲述的移民故事", 
+                    icon: "🎭",
+                    score: { connection: 1, interaction: -1 },
+                    personality: "soul_archaeologist",
+                    explanation: "被美国建国的革命精神和层叠叙事所吸引"
+                },
+                { 
+                    text: "巡演制作的后台混乱和旅行生活方式", 
+                    icon: "🎪",
+                    score: { connection: -1, interaction: -1 },
+                    personality: "eternal_wanderer",
+                    explanation: "着迷于戏剧生活的短暂本质和游牧现实"
+                },
+                { 
+                    text: "音乐剧的璀璨幻想和变革力量", 
+                    icon: "✨",
+                    score: { connection: -1, interaction: 1 },
+                    personality: "dreamweaver",
+                    explanation: "被百老汇梦想的逃避主义和浪漫可能性所吸引"
                 }
             ]
         },
         {
             id: 2,
-            text: "当您听到'上海味道'时，脑海中首先浮现的是什么？",
-            hint: "嗅觉记忆如老照片，有些定格瞬间，有些展开长卷",
+            text: "在中央公园，您在哪里找到完美的纽约时刻？",
+            hint: "公园是城市对比的缩影",
             options: [
                 { 
-                    text: "清晨弄堂里飘出的咖啡香和油条味", 
-                    icon: "☕",
-                    score: { connection: 1, interaction: -1 },
-                    personality: "soul_archaeologist",
-                    explanation: "晨间弄堂飘出的烟火气，是这座城市最真实的体温"
-                },
-                { 
-                    text: "石库门里时光沉淀的木质香气和故事感", 
-                    icon: "🏛️",
+                    text: "在温室花园研究弗雷德里克·劳·奥姆斯特德的原始公园规划", 
+                    icon: "🗺️",
                     score: { connection: 1, interaction: 1 },
                     personality: "historical_surveyor",
-                    explanation: "时光在木纹中沉淀，香气里藏着未完待续的往事"
+                    explanation: "分析美国第一个景观公共公园的刻意设计"
                 },
                 { 
-                    text: "外滩江风带来的清新空气与现代感", 
-                    icon: "💨",
-                    score: { connection: -1, interaction: 1 },
-                    personality: "dreamweaver",
-                    explanation: "江风带来的不仅是清新，还有新旧交替的呼吸感"
-                },
-                { 
-                    text: "法租界梧桐树下混合的花香与咖啡香", 
+                    text: "在老树间城市历史低语的安静角落", 
                     icon: "🌳",
+                    score: { connection: 1, interaction: -1 },
+                    personality: "soul_archaeologist",
+                    explanation: "在最古老、最宁静的空间倾听公园隐藏的故事"
+                },
+                { 
+                    text: "在贝塞斯达露台观察跑步者、马车和游客的持续流动", 
+                    icon: "🚶‍♀️",
                     score: { connection: -1, interaction: -1 },
                     personality: "eternal_wanderer",
-                    explanation: "梧桐树下，花香与咖啡香交织成一首没有词的小调"
+                    explanation: "将公园视为无尽人流和故事的十字路口"
+                },
+                { 
+                    text: "在弓桥上想象浪漫电影场景和虚构邂逅", 
+                    icon: "💖",
+                    score: { connection: -1, interaction: 1 },
+                    personality: "dreamweaver",
+                    explanation: "通过浪漫可能性的电影镜头看公园"
                 }
             ]
         },
         {
             id: 3,
-            text: "在规划上海旅行路线时，您更倾向于哪种方式？",
-            hint: "有人欢喜按图索骥，有人欢喜信马由缰，各有各的惬意",
+            text: "您如何导航曼哈顿的网格？",
+            hint: "城市布局反映了穿越生活的不同方式",
             options: [
                 { 
-                    text: "功课做足，几点到哪搭，转几号线，连餐厅都预先订好位子", 
-                    icon: "📋",
+                    text: "精确坐标 - 交叉街道、地铁线路和高效路线", 
+                    icon: "📍",
                     score: { connection: 1, interaction: 1 },
                     personality: "historical_surveyor",
-                    explanation: "判断型倾用精确的线条勾勒旅途，让每个时刻都恰如其分"
+                    explanation: "掌握纽约最著名特征的数学精度"
                 },
                 { 
-                    text: "大方向有数，细节随缘，留白的地方常有意外惊喜", 
+                    text: "社区历史和民族聚居区 - 小意大利、唐人街等", 
+                    icon: "🏙️",
+                    score: { connection: 1, interaction: 1 },
+                    personality: "historical_surveyor",
+                    explanation: "通过网格中嵌入的移民历史层进行导航"
+                },
+                { 
+                    text: "跟随人群、直觉和主要大道之外的意外发现", 
                     icon: "🧭",
                     score: { connection: -1, interaction: -1 },
                     personality: "eternal_wanderer",
-                    explanation: "留白处常有惊喜，让脚步跟随直觉的牵引"
+                    explanation: "拥抱城市超越其刚性结构的自发流动"
                 },
                 { 
-                    text: "研究历史文化背景，按主题规划路线", 
-                    icon: "📚",
-                    score: { connection: 1, interaction: 1 },
-                    personality: "historical_surveyor",
-                    explanation: "沿着历史与文化的经纬，编织有深度的探索"
-                },
-                { 
-                    text: "询问当地朋友推荐，跟随直觉走", 
-                    icon: "💡",
+                    text: "情感地标 - 最喜欢的书店、难忘的餐厅、风景", 
+                    icon: "❤️",
                     score: { connection: -1, interaction: -1 },
                     personality: "eternal_wanderer",
-                    explanation: "从当地人的眼光中，捕捉城市最鲜活的侧面"
+                    explanation: "通过个人连接而非坐标来绘制城市地图"
                 }
             ]
         },
         {
             id: 4,
-            text: "当您需要为朋友选择上海纪念品时，更看重什么？",
-            hint: "伴手礼选得灵不灵，看侬懂不懂朋友，也看侬懂不懂上海",
+            text: "纽约移民历史的哪个方面最能引起您的共鸣？",
+            hint: "城市的灵魂建立在到达和重塑的层叠之上",
             options: [
                 { 
-                    text: "产品的实用性、质量和设计美学", 
-                    icon: "🎁",
+                    text: "移民劳动留下的建筑遗产和基础设施", 
+                    icon: "🏗️",
                     score: { connection: -1, interaction: 1 },
                     personality: "dreamweaver",
-                    explanation: "经得起时间凝视的设计，以永恒之美承载心意"
+                    explanation: "欣赏改变了天际线的有形成就"
                 },
                 { 
-                    text: "纪念品蕴含的情感价值和独特故事", 
-                    icon: "❤️",
+                    text: "埃利斯岛抵达者的个人日记和信件", 
+                    icon: "✉️",
                     score: { connection: 1, interaction: -1 },
                     personality: "soul_archaeologist",
-                    explanation: "器物背后的温度与故事，比器物本身更值得珍藏"
+                    explanation: "被希望、恐惧和新开始的亲密故事所触动"
                 },
                 { 
-                    text: "是否体现上海特色和文化代表性", 
-                    icon: "🏮",
+                    text: "民族社区文化传统的保存", 
+                    icon: "🌍",
                     score: { connection: 1, interaction: 1 },
                     personality: "historical_surveyor",
-                    explanation: "能承载一座城市精神气质的，方为真正的纪念"
+                    explanation: "珍视城市结构中遗产的系统性维护"
                 },
                 { 
-                    text: "朋友的个人喜好和个性匹配度", 
-                    icon: "👤",
+                    text: "定义纽约体验的自我不断重塑", 
+                    icon: "🦋",
                     score: { connection: -1, interaction: -1 },
                     personality: "eternal_wanderer",
-                    explanation: "最珍贵的礼物，是懂一个人如懂一首诗"
+                    explanation: "与城市身份内在的持续转变产生共鸣"
                 }
             ]
         },
         {
             id: 5,
-            text: "您希望在什么样的场景使用这款香氛",
-            hint: "香气如亲密的伴侣，在不同场景里讲述不同的故事",
+            text: "您什么时候最能感受到与纽约能量的连接？",
+            hint: "城市的脉搏在不同时刻以不同方式跳动",
             options: [
                 { 
-                    text: "工作辰光，在陆家嘴写字楼里，保持清醒与专注的时刻", 
-                    icon: "🏙️",
+                    text: "中央车站早高峰期间", 
+                    icon: "🕗",
                     score: { connection: 1, interaction: 1 },
                     personality: "historical_surveyor",
-                    explanation: "如同陆家嘴清晨第一杯手冲，香气是理性思维的经纬，在办公桌前织就专注的网"
+                    explanation: "在城市组织混乱和精确计时达到顶峰效率时感受它"
                 },
                 { 
-                    text: "居家休息，在思南公馆附近的老公寓里，读书或听音乐的时候", 
-                    icon: "🕰️",
+                    text: "深夜在格林威治村的爵士俱乐部", 
+                    icon: "🎷",
                     score: { connection: 1, interaction: -1 },
                     personality: "soul_archaeologist",
-                    explanation: "思南公馆的老窗格过滤午后阳光，香气是翻动书页时的呼吸，温柔标记着私人时光的折痕"
+                    explanation: "在最亲密、地下的空间连接城市的艺术灵魂"
                 },
                 { 
-                    text: "社交场合，在武康路或安福路的小店，与朋友相聚聊天", 
-                    icon: "🌉",
+                    text: "日落时分在史坦顿岛渡轮上，看着天际线逐渐远去", 
+                    icon: "⛴️",
                     score: { connection: -1, interaction: -1 },
                     personality: "eternal_wanderer",
-                    explanation: "武康路咖啡馆的轻声细语间，香气是未说出口的潜台词，在杯沿与目光交错处轻轻流淌"
+                    explanation: "体验暂时离开和返回的苦乐参半之美"
                 },
                 { 
-                    text: "深夜独处，在自家书房或卧室，反思或创作的私人时光", 
-                    icon: "🌿",
+                    text: "黎明时分人群稀少后的时代广场", 
+                    icon: "🌅",
                     score: { connection: -1, interaction: 1 },
                     personality: "dreamweaver",
-                    explanation: "深夜书房的台灯光晕里，香气是思绪的罗盘，引导灵感在静谧中寻到自己的流向"
+                    explanation: "看到城市最著名的奇观被晨光和宁静所改变"
                 }
             ]
         }
     ]
 };
 
-// 上海城市香水数据 - 4款，对应4种新人格类型（双语香调）
-const shanghaiPerfumes = [
+// 纽约城市香水数据 - 4款，对应4种新人格类型（双语香调）
+const newyorkPerfumes = [
     {
         id: 1,
-        name: "BUND SURVEYOR, 1920",
-        chineseName: "外滩测绘师，一九二〇",
+        name: "GRID PLAN MANUSCRIPT",
+        chineseName: "网格计划手稿",
         personalityType: "historical_surveyor",
         personalityTags: {
-            en: ["Rational Survey", "Precise Recording", "Structural Beauty", "Time Coordinates"],
-            zh: ["理性测绘", "精密记录", "结构之美", "时间经纬"]
+            en: ["Urban Planning", "Structural Precision", "Architectural Blueprint", "Ordered Chaos"],
+            zh: ["城市规划", "结构精确", "建筑蓝图", "有序混沌"]
         },
-        icon: "fas fa-ruler-combined",
+        icon: "fas fa-drafting-compass",
         notes: {
             top: {
-                en: ["Old drawing paper subtle astringency", "Brass compass metal coolness"],
-                zh: ["旧图纸微涩", "黄铜罗盘金属凉意"]
+                en: ["Quill pen ink", "Yellowed parchment paper"],
+                zh: ["鹅毛笔墨水", "泛黄羊皮纸"]
             },
             middle: {
-                en: ["River breeze", "Distant freighter whistle", "Warehouse coffee beans"],
-                zh: ["江风", "远处货轮汽笛", "仓库咖啡豆"]
+                en: ["Freshly upturned earth", "Wild grasses of untouched land"],
+                zh: ["新翻起的泥土", "未开发土地的野草"]
             },
             base: {
-                en: ["Parchment", "Ink", "Time dust"],
-                zh: ["羊皮纸", "墨香", "时光尘"]
+                en: ["Aged leather", "Sandstone", "Urban ambition"],
+                zh: ["陈年皮革", "砂岩", "都市野心"]
             }
         },
         description: {
-            en: "Born for Historical Surveyors. Capturing the precise lines and temporal imprints of the Bund architecture, like 1920s surveyors measuring the city's texture with footsteps.",
-            zh: "为历史测绘者而生。捕捉外滩建筑群的精确线条与时间印记，如1920年代测绘师用脚步丈量城市肌理。"
+            en: "For Historical Surveyors. Capturing the precision of the Manhattan grid with quill ink, parchment, and the scent of upturned earth where dreams were first planned.",
+            zh: "为历史测绘者而生。用鹅毛笔、羊皮纸和规划之初翻起的泥土气息，捕捉曼哈顿网格的精准。"
         },
         literaryReference: {
-            en: "Precise as an architect's blueprint, reconstructing a city's rational skeleton through grids and scales.",
-            zh: "严谨如建筑师的手稿，在网格与尺度间，重构一座城市的理性骨架。"
+            en: "Like the Manhattan grid plan itself, finding order in the chaos of urban evolution.",
+            zh: "如同曼哈顿的网格规划，在城市的进化混沌中寻找秩序。"
         },
         intensity: {
             en: "Medium-high",
@@ -543,39 +543,39 @@ const shanghaiPerfumes = [
     },
     {
         id: 2,
-        name: "STRATUM OF THE CREEK",
-        chineseName: "河浜层积",
+        name: "FIVE POINTS ECHO",
+        chineseName: "五点区回响",
         personalityType: "soul_archaeologist",
         personalityTags: {
-            en: ["Memory Excavation", "Emotional Stratification", "Time Archaeology", "Subconscious Exploration"],
-            zh: ["记忆挖掘", "情感层积", "时光考古", "潜意识勘探"]
+            en: ["Urban Archaeology", "Immigrant Memory", "Layered History", "Subterranean Echo"],
+            zh: ["都市考古", "移民记忆", "层叠历史", "地下回响"]
         },
-        icon: "fas fa-layer-group",
+        icon: "fas fa-excavator",
         notes: {
             top: {
-                en: ["Buried creek damp soil", "Old wall root moss"],
-                zh: ["埋没河浜的湿土", "旧墙根青苔"]
+                en: ["Old brick soaked with rain", "Damp cellar air"],
+                zh: ["雨水浸泡的老砖墙", "潮湿的地窖空气"]
             },
             middle: {
-                en: ["Gardenia", "Night-blooming jasmine", "Old courtyard memory"],
-                zh: ["栀子花", "夜来香", "旧庭院记忆"]
+                en: ["Basement whiskey", "Cheap perfume", "Hope"],
+                zh: ["地下室威士忌", "廉价香水", "希望"]
             },
             base: {
-                en: ["Time dust", "Osmanthus", "Agarwood"],
-                zh: ["时光尘", "桂花", "沉香"]
+                en: ["Time-worn cobblestone", "Tarnished copper", "Enduring spirit"],
+                zh: ["时光磨损的鹅卵石", "失去光泽的铜", "不屈精神"]
             }
         },
         description: {
-            en: "Customized for Soul Archaeologists. Delving into Shanghai's forgotten folds, excavating the damp memories and collective subconscious before creek burial.",
-            zh: "为心灵考古者定制。深入上海被遗忘的褶皱，挖掘河浜填埋前的潮湿记忆与集体潜意识。"
+            en: "For Soul Archaeologists. Excavating the layered memories of Five Points: old brick soaked with rain, basement whiskey, and the enduring scent of hope.",
+            zh: "为心灵考古者定制。挖掘五点区的层积记忆：雨水浸泡的老砖墙、地下室的威士忌酒渍，以及希望的不灭气息。"
         },
         literaryReference: {
-            en: "Like archaeology in the city's memory strata, each layer is an emotional fossil buried by time.",
-            zh: "像在城市的记忆断层中考古，每一层都是被时间掩埋的情感化石。"
+            en: "In the basements of old tenements, the city whispers its secrets to those who listen.",
+            zh: "在老式公寓的地下室里，城市向倾听者低语它的秘密。"
         },
         intensity: {
-            en: "Gentle and lasting",
-            zh: "温和持久"
+            en: "Deep and complex",
+            zh: "深邃复杂"
         },
         longevity: {
             en: "10-12 hours",
@@ -585,39 +585,39 @@ const shanghaiPerfumes = [
     },
     {
         id: 3,
-        name: "FOREIGN CONCESSION TRUNK",
-        chineseName: "租界旅行箱",
+        name: "ELLIS ISLAND FOG",
+        chineseName: "埃利斯岛迷雾",
         personalityType: "eternal_wanderer",
         personalityTags: {
-            en: ["Mobile Station", "Border Crossing", "Journey as Home", "Eternal Departure"],
-            zh: ["流动驿站", "边界穿越", "旅途即家", "永恒出发"]
+            en: ["Immigrant Journey", "Threshold State", "New Beginnings", "Multilingual Dreams"],
+            zh: ["移民旅程", "阈限状态", "新的开始", "多语梦想"]
         },
-        icon: "fas fa-suitcase",
+        icon: "fas fa-ship",
         notes: {
             top: {
-                en: ["Old camphorwood trunk", "Packed silk slight coolness"],
-                zh: ["旧樟木箱", "打包丝绸微凉"]
+                en: ["Cold mist over water", "Leather suitcase"],
+                zh: ["水上的冷雾", "皮革行李箱"]
             },
             middle: {
-                en: ["Yellowed ticket paper pulp", "Customs stamp ink"],
-                zh: ["泛黄票据纸浆", "海关印章墨"]
+                en: ["Multilingual whispers", "Warm breath of anticipation"],
+                zh: ["多语言的低语", "期待的温暖呼吸"]
             },
             base: {
-                en: ["Distant port sea breeze", "Perpetual suitcase expectation"],
-                zh: ["远方港口海风", "永续行李箱期待"]
+                en: ["Distant ocean salt", "Newspaper print", "Dreams unspoken"],
+                zh: ["远洋的盐分", "报纸油墨", "未说出的梦想"]
             }
         },
         description: {
-            en: "Prepared for Eternal Wanderers. No permanent home, only a perpetual travel trunk, filled with concession memories and next-stop sea breezes.",
-            zh: "为永恒漂泊者准备。没有永恒的居所，只有永在途中的旅行箱，装满租界记忆与下一站的海风。"
+            en: "For Eternal Wanderers. The misty anticipation of Ellis Island, leather suitcases, multilingual whispers, and the warm breath of new beginnings.",
+            zh: "为永恒漂泊者准备。埃利斯岛的雾色期待、皮革行李箱、多语言的低语呢喃，与新开始的温暖呼吸。"
         },
         literaryReference: {
-            en: "The sound of a suitcase closing is the prelude to another departure.",
-            zh: "行李箱合上的声音，是又一次出发的序曲。"
+            en: "The subway's rumbling rhythm is the city's heartbeat, and my constant companion.",
+            zh: "地铁的隆隆节奏是这座城市的心跳，也是我永恒的伴侣。"
         },
         intensity: {
-            en: "Fresh and airy",
-            zh: "清爽飘逸"
+            en: "Light and ethereal",
+            zh: "轻盈空灵"
         },
         longevity: {
             en: "6-8 hours",
@@ -627,39 +627,39 @@ const shanghaiPerfumes = [
     },
     {
         id: 4,
-        name: "PEACH BLOSSOM FANTAST",
-        chineseName: "桃花扇梦",
+        name: "GATSBY'S LAWN DEW",
+        chineseName: "盖茨比晨露",
         personalityType: "dreamweaver",
         personalityTags: {
-            en: ["Parallel Time-Space", "Romantic Filter", "Legend Weaving", "Dream Construction"],
-            zh: ["平行时空", "浪漫滤镜", "传奇编织", "幻梦构筑"]
+            en: ["Golden Age Dreams", "Morning After", "Broken Crystal", "Unfinished Parties"],
+            zh: ["黄金时代梦想", "翌日清晨", "破碎水晶", "未竟派对"]
         },
-        icon: "fas fa-theater-masks",
+        icon: "fas fa-champagne-glasses",
         notes: {
             top: {
-                en: ["Theater backstage powder scent", "Aged silk"],
-                zh: ["戏台后台脂粉香", "陈年丝绸"]
+                en: ["Morning dew on grass", "Shattered champagne bubbles"],
+                zh: ["草上的晨露", "破碎的香槟气泡"]
             },
             middle: {
-                en: ["Night-blooming jasmine", "White orchid string sweet charm"],
-                zh: ["夜来香", "白兰串幽甜"]
+                en: ["Freshly cut lawn", "Fading gardenia"],
+                zh: ["新修剪的草坪", "渐渐消散的栀子花"]
             },
             base: {
-                en: ["Unfinished garden dream", "Peach blossom fan shadow"],
-                zh: ["未竟园梦", "桃花扇影"]
+                en: ["Linen sheets", "Lost pearl", "Morning melancholy"],
+                zh: ["亚麻床单", "遗失的珍珠", "晨间怅惘"]
             }
         },
         description: {
-            en: "Created for Dreamweavers. Layering Shanghai's reality with a soft-focus filter, constructing parallel space-time and unfinished legends like the Peach Blossom Fan.",
-            zh: "为旧时梦境师创造。在现实上海之上覆一层柔光滤镜，构筑桃花扇般的平行时空与未竟传奇。"
+            en: "For Dreamweavers. The morning dew on Gatsby's lawn, champagne bubbles, freshly cut grass, and the lingering melancholy of a party that never truly ends.",
+            zh: "为旧时梦境师创造。盖茨比草坪上的晨露、香槟气泡、新鲜修剪的草香，以及一场永不真正结束的派对的淡淡怅惘。"
         },
         literaryReference: {
-            en: "Every wisp of fragrance is an unfinished story, waiting to be continued in dreams.",
-            zh: "每一缕香气都是一个未讲完的故事，等待在梦境中续写。"
+            en: "Every corner of this city is a stage, waiting for its story to be told.",
+            zh: "这座城市的每个角落都是一个舞台，等待着它的故事被讲述。"
         },
         intensity: {
-            en: "Light and dreamy",
-            zh: "轻盈梦幻"
+            en: "Soft and lingering",
+            zh: "柔和持久"
         },
         longevity: {
             en: "4-6 hours",
@@ -684,7 +684,7 @@ const lorealPerfumesByPersonality = {
                     en: ["Lavender", "Orange Blossom", "Vanilla"],
                     zh: ["薰衣草", "橙花", "香草"]
                 },
-                matchReason: "Matches your rational surveying and structured thinking"
+                matchReason: "Matches your appreciation for precision and structural beauty"
             },
             {
                 brand: "GIORGIO ARMANI",
@@ -696,7 +696,7 @@ const lorealPerfumesByPersonality = {
                     en: ["Blackcurrant", "Rose", "Vanilla"],
                     zh: ["黑醋栗", "玫瑰", "香草"]
                 },
-                matchReason: "Aligns with your pursuit of precision and structural beauty"
+                matchReason: "Aligns with your methodical approach to urban exploration"
             }
         ],
         zh: [
@@ -710,7 +710,7 @@ const lorealPerfumesByPersonality = {
                     en: ["Lavender", "Orange Blossom", "Vanilla"],
                     zh: ["薰衣草", "橙花", "香草"]
                 },
-                matchReason: "与您的理性测绘和结构化思维相匹配"
+                matchReason: "与您对精确度和结构美的欣赏相匹配"
             },
             {
                 brand: "GIORGIO ARMANI",
@@ -722,7 +722,7 @@ const lorealPerfumesByPersonality = {
                     en: ["Blackcurrant", "Rose", "Vanilla"],
                     zh: ["黑醋栗", "玫瑰", "香草"]
                 },
-                matchReason: "符合您对精确度和结构美的追求"
+                matchReason: "符合您系统性的城市探索方法"
             }
         ]
     },
@@ -849,7 +849,7 @@ const lorealPerfumesByPersonality = {
                     en: ["Aldehydes", "Citrus", "Ylang-ylang"],
                     zh: ["醛香", "柑橘", "依兰"]
                 },
-                matchReason: "Aligns with your imagination constructing parallel time-space on reality's foundation"
+                matchReason: "Aligns with your imagination constructing parallel realities"
             },
             {
                 brand: "DIOR",
@@ -875,7 +875,7 @@ const lorealPerfumesByPersonality = {
                     en: ["Aldehydes", "Citrus", "Ylang-ylang"],
                     zh: ["醛香", "柑橘", "依兰"]
                 },
-                matchReason: "符合您在现实基础上构筑平行时空的想象力"
+                matchReason: "符合您构筑平行现实的想象力"
             },
             {
                 brand: "DIOR",
@@ -920,9 +920,10 @@ const resultTitleEl = document.getElementById('resultTitle');
 const resultSubtitleEl = document.getElementById('resultSubtitle');
 const resultDescriptionEl = document.getElementById('personalityDescription');
 const resultPerfumeNameEl = document.getElementById('resultPerfumeName');
-const shanghaiPerfumesEl = document.getElementById('shanghaiPerfumes');
+const newyorkPerfumesEl = document.getElementById('newyorkPerfumes');
 const productGridEl = document.getElementById('productGrid');
 const engravingTextEl = document.getElementById('engravingText');
+const engravingTextZHEl = document.getElementById('engravingTextZH');
 const engravingPreviewEl = document.getElementById('engravingPreview');
 const arButtonEl = document.getElementById('arButton');
 const addToCartButtonEl = document.getElementById('addToCartButton');
@@ -947,7 +948,7 @@ function toggleLanguage() {
     updateDynamicContent();
     
     // 保存语言偏好到localStorage
-    localStorage.setItem('shanghaiLanguage', currentLang);
+    localStorage.setItem('newyorkLanguage', currentLang);
 }
 
 // 更新语言切换按钮
@@ -969,7 +970,7 @@ function updateLanguageToggle() {
 // 更新页面静态文本
 function updatePageText() {
     // 更新页面标题
-    document.title = translations[currentLang].pageTitle;
+    document.title = newYorkTranslations[currentLang].pageTitle;
     
     // 更新所有带data-lang属性的元素
     document.querySelectorAll('[data-lang]').forEach(element => {
@@ -1034,7 +1035,7 @@ function updatePageText() {
 // 更新测试进度文本
 function updateProgressText() {
     if (progressTextEl) {
-        const totalQuestions = shanghaiQuestions[currentLang].length;
+        const totalQuestions = newyorkQuestions[currentLang].length;
         if (currentLang === 'en') {
             progressTextEl.textContent = `Question ${currentQuestion + 1}/${totalQuestions}`;
         } else {
@@ -1067,7 +1068,7 @@ function updateButtonTexts() {
         });
         
         // 更新下一题按钮文本
-        const totalQuestions = shanghaiQuestions[currentLang].length;
+        const totalQuestions = newyorkQuestions[currentLang].length;
         if (currentQuestion === totalQuestions - 1) {
             const viewResultsText = currentLang === 'en' ? 'View Results' : '查看结果';
             nextBtnEl.innerHTML = `<span data-lang="${currentLang}">${viewResultsText}</span>`;
@@ -1133,7 +1134,7 @@ function updateResultsForLanguage() {
     if (!userPersonality) return;
     
     // 获取当前人格信息
-    const personalityInfo = translations[currentLang][userPersonality];
+    const personalityInfo = newYorkTranslations[currentLang][userPersonality];
     
     // 更新人格描述
     if (resultDescriptionEl && personalityInfo) {
@@ -1144,7 +1145,7 @@ function updateResultsForLanguage() {
     }
     
     // 更新推荐香水信息
-    const recommendedPerfume = getRecommendedShanghaiPerfume(userPersonality);
+    const recommendedPerfume = getRecommendedNewYorkPerfume(userPersonality);
     if (recommendedPerfume) {
         // 更新结果标题中的香水名
         if (resultPerfumeNameEl) {
@@ -1172,8 +1173,8 @@ function updateResultsForLanguage() {
         // 更新个人资料标签
         updateProfileTags(personalityInfo, recommendedPerfume);
         
-        // 重新显示上海香水
-        displayShanghaiPerfumes(recommendedPerfume);
+        // 重新显示纽约香水
+        displayNewYorkPerfumes(recommendedPerfume);
         
         // 重新显示欧莱雅推荐香水
         displayLorealRecommendations(userPersonality);
@@ -1181,9 +1182,9 @@ function updateResultsForLanguage() {
 }
 
 // 初始化函数
-function initShanghai() {
+function initNewYork() {
     // 检查保存的语言偏好
-    const savedLang = localStorage.getItem('shanghaiLanguage');
+    const savedLang = localStorage.getItem('newyorkLanguage');
     if (savedLang) {
         currentLang = savedLang;
     }
@@ -1212,9 +1213,8 @@ function initShanghai() {
         engravingTextEl.addEventListener('input', updateEngravingPreview);
     }
     
-    const engravingTextZH = document.getElementById('engravingTextZH');
-    if (engravingTextZH) {
-        engravingTextZH.addEventListener('input', updateEngravingPreview);
+    if (engravingTextZHEl) {
+        engravingTextZHEl.addEventListener('input', updateEngravingPreview);
     }
     
     // 绑定赠礼选择
@@ -1279,8 +1279,8 @@ function initShareFunctionality() {
 function updateShareModal() {
     if (!userPersonality) return;
     
-    const personalityInfo = translations[currentLang][userPersonality];
-    const recommendedPerfume = getRecommendedShanghaiPerfume(userPersonality);
+    const personalityInfo = newYorkTranslations[currentLang][userPersonality];
+    const recommendedPerfume = getRecommendedNewYorkPerfume(userPersonality);
     
     if (personalityInfo && recommendedPerfume) {
         // 更新人格类型
@@ -1313,7 +1313,7 @@ function updateShareTags(perfume) {
     // 添加人格标签
     const personalityTag = document.createElement('span');
     personalityTag.className = 'share-tag';
-    const personalityInfo = translations[currentLang][userPersonality];
+    const personalityInfo = newYorkTranslations[currentLang][userPersonality];
     personalityTag.textContent = personalityInfo.name;
     shareTagsEl.appendChild(personalityTag);
     
@@ -1331,14 +1331,14 @@ function updateShareTags(perfume) {
 // 处理分享
 function handleShare(platform) {
     let message = '';
-    const personalityInfo = translations[currentLang][userPersonality];
-    const recommendedPerfume = getRecommendedShanghaiPerfume(userPersonality);
+    const personalityInfo = newYorkTranslations[currentLang][userPersonality];
+    const recommendedPerfume = getRecommendedNewYorkPerfume(userPersonality);
     const perfumeName = currentLang === 'en' ? recommendedPerfume.name : recommendedPerfume.chineseName;
     
     if (currentLang === 'en') {
-        message = `Discover my Shanghai fragrance: ${perfumeName} (${personalityInfo.name}). Explore city memories and personalized scents with L'Oréal City Series!`;
+        message = `Discover my New York fragrance: ${perfumeName} (${personalityInfo.name}). Explore grid dreams and personalized scents with L'Oréal City Series!`;
     } else {
-        message = `发现我的上海香气：${perfumeName}（${personalityInfo.name}）。快来体验欧莱雅城市系列，探索城市记忆与个性香氛！`;
+        message = `发现我的纽约香气：${perfumeName}（${personalityInfo.name}）。快来体验欧莱雅城市系列，探索网格梦想与个性香氛！`;
     }
     
     switch(platform) {
@@ -1380,7 +1380,7 @@ function copyShareText() {
 
 // 更新测试进度
 function updateProgress() {
-    const totalQuestions = shanghaiQuestions[currentLang].length;
+    const totalQuestions = newyorkQuestions[currentLang].length;
     const progress = ((currentQuestion + 1) / totalQuestions) * 100;
     progressBarEl.style.width = `${progress}%`;
     
@@ -1396,7 +1396,7 @@ function updateProgress() {
 
 // 显示当前问题
 function showQuestion() {
-    const questions = shanghaiQuestions[currentLang];
+    const questions = newyorkQuestions[currentLang];
     const question = questions[currentQuestion];
     
     if (!question) {
@@ -1452,7 +1452,7 @@ function selectOption(index) {
     userSelections[currentQuestion] = index;
     
     // 更新二维分数
-    const questions = shanghaiQuestions[currentLang];
+    const questions = newyorkQuestions[currentLang];
     const question = questions[currentQuestion];
     const option = question.options[index];
     
@@ -1496,7 +1496,7 @@ function calculatePersonality() {
 
 // 下一题
 function nextQuestion() {
-    const questions = shanghaiQuestions[currentLang];
+    const questions = newyorkQuestions[currentLang];
     
     if (userSelections[currentQuestion] === undefined) {
         alert(currentLang === 'en' ? "Please select an option" : "请选择一个选项");
@@ -1518,7 +1518,7 @@ function prevQuestion() {
         // 移除上一题的影响
         const prevIndex = userSelections[currentQuestion - 1];
         if (prevIndex !== undefined) {
-            const questions = shanghaiQuestions[currentLang];
+            const questions = newyorkQuestions[currentLang];
             const prevQuestion = questions[currentQuestion - 1];
             const prevOption = prevQuestion.options[prevIndex];
             
@@ -1537,7 +1537,7 @@ function prevQuestion() {
 
 // 计算匹配度
 function calculateMatchScore(selections, personality) {
-    const questions = shanghaiQuestions[currentLang];
+    const questions = newyorkQuestions[currentLang];
     let consistentChoices = 0;
     let totalChoices = 0;
     
@@ -1562,9 +1562,9 @@ function calculateMatchScore(selections, personality) {
     return Math.min(98, Math.round(baseScore + consistencyBonus));
 }
 
-// 确定推荐的上海香水
-function getRecommendedShanghaiPerfume(personalityType) {
-    return shanghaiPerfumes.find(perfume => perfume.personalityType === personalityType) || shanghaiPerfumes[0];
+// 确定推荐的纽约香水
+function getRecommendedNewYorkPerfume(personalityType) {
+    return newyorkPerfumes.find(perfume => perfume.personalityType === personalityType) || newyorkPerfumes[0];
 }
 
 // 获取欧莱雅推荐香水
@@ -1581,8 +1581,8 @@ function showResults() {
     // 计算人格类型
     userPersonality = calculatePersonality();
     
-    // 获取推荐的上海香水
-    const recommendedPerfume = getRecommendedShanghaiPerfume(userPersonality);
+    // 获取推荐的纽约香水
+    const recommendedPerfume = getRecommendedNewYorkPerfume(userPersonality);
     
     // 计算匹配度
     const matchScore = calculateMatchScore(userSelections, userPersonality);
@@ -1598,8 +1598,8 @@ function showResults() {
     // 更新结果信息
     updateResultInfo(userPersonality, matchScore, recommendedPerfume);
     
-    // 显示上海香水选择
-    displayShanghaiPerfumes(recommendedPerfume);
+    // 显示纽约香水选择
+    displayNewYorkPerfumes(recommendedPerfume);
     
     // 显示欧莱雅其他香水推荐
     displayLorealRecommendations(userPersonality);
@@ -1613,7 +1613,7 @@ function showResults() {
 
 // 更新结果信息
 function updateResultInfo(personality, matchScore, recommendedPerfume) {
-    const personalityInfo = translations[currentLang][personality];
+    const personalityInfo = newYorkTranslations[currentLang][personality];
     
     // 更新DOM元素
     if (userPersonalityEl) userPersonalityEl.textContent = personalityInfo.name;
@@ -1656,16 +1656,15 @@ function updateProfileTags(personalityInfo, recommendedPerfume) {
             profileTagsEl.appendChild(tagElement);
         });
     }
-    
 }
 
-// 显示上海香水
-function displayShanghaiPerfumes(recommendedPerfume) {
-    if (!shanghaiPerfumesEl) return;
+// 显示纽约香水
+function displayNewYorkPerfumes(recommendedPerfume) {
+    if (!newyorkPerfumesEl) return;
     
-    shanghaiPerfumesEl.innerHTML = "";
+    newyorkPerfumesEl.innerHTML = "";
     
-    shanghaiPerfumes.forEach(perfume => {
+    newyorkPerfumes.forEach(perfume => {
         const isRecommended = perfume.id === recommendedPerfume.id;
         
         const perfumeCard = document.createElement('div');
@@ -1695,8 +1694,8 @@ function displayShanghaiPerfumes(recommendedPerfume) {
                     <i class="${perfume.icon}"></i>
                 </div>
                 <h3>${displayName}</h3>
-                <div class="perfume-mbti-tag">${currentLang === 'en' ? 'For' : '适合'}: ${translations[currentLang][perfume.personalityType].name}</div>
-                ${isRecommended ? `<div class="perfume-mbti-tag" style="background-color: rgba(76, 175, 80, 0.2); color: var(--loreal-green);">${translations[currentLang].recommendedForYou}</div>` : ''}
+                <div class="perfume-mbti-tag">${currentLang === 'en' ? 'For' : '适合'}: ${newYorkTranslations[currentLang][perfume.personalityType].name}</div>
+                ${isRecommended ? `<div class="perfume-mbti-tag" style="background-color: rgba(76, 175, 80, 0.2); color: var(--loreal-green);">${newYorkTranslations[currentLang].recommendedForYou}</div>` : ''}
                 
                 <div class="perfume-notes">
                     <div class="perfume-note">${currentLang === 'en' ? 'Top:' : '前调:'} ${topNotes}</div>
@@ -1727,13 +1726,13 @@ function displayShanghaiPerfumes(recommendedPerfume) {
                 
                 // 更新推荐信息
                 const newMatchScore = calculateMatchScore(userSelections, perfume.personalityType);
-                const personalityInfo = translations[currentLang][perfume.personalityType];
+                const personalityInfo = newYorkTranslations[currentLang][perfume.personalityType];
                 updateResultInfo(perfume.personalityType, newMatchScore, perfume);
                 updateProfileTags(personalityInfo, perfume);
             });
         }
         
-        shanghaiPerfumesEl.appendChild(perfumeCard);
+        newyorkPerfumesEl.appendChild(perfumeCard);
     });
 }
 
@@ -1785,12 +1784,9 @@ function updateEngravingPreview() {
     // 获取当前语言的刻字文本
     let text = '';
     if (currentLang === 'en' && engravingTextEl) {
-        text = engravingTextEl.value || "Shanghai Memory";
-    } else if (currentLang === 'zh') {
-        const engravingTextZH = document.getElementById('engravingTextZH');
-        if (engravingTextZH) {
-            text = engravingTextZH.value || "上海记忆";
-        }
+        text = engravingTextEl.value || "NYC Dreams";
+    } else if (currentLang === 'zh' && engravingTextZHEl) {
+        text = engravingTextZHEl.value || "纽约梦想";
     }
     
     // 更新预览文本
@@ -1808,7 +1804,7 @@ function updateEngravingPreview() {
 // AR试香体验
 function tryAR() {
     const selectedPerfumeCard = document.querySelector('.city-perfume-card.recommended') || document.querySelector('.city-perfume-card');
-    let selectedPerfume = "Shanghai Memory Fragrance";
+    let selectedPerfume = "New York Memory Fragrance";
     
     if (selectedPerfumeCard) {
         const perfumeNameElement = selectedPerfumeCard.querySelector('h3');
@@ -1872,7 +1868,7 @@ function tryAR() {
 // 加入购物车
 function addToCart() {
     const selectedPerfumeCard = document.querySelector('.city-perfume-card[style*="border: 2px solid"]') || document.querySelector('.city-perfume-card');
-    let selectedPerfume = "Shanghai Memory Fragrance";
+    let selectedPerfume = "New York Memory Fragrance";
     
     if (selectedPerfumeCard) {
         const perfumeNameElement = selectedPerfumeCard.querySelector('h3');
@@ -1885,11 +1881,8 @@ function addToCart() {
     let engravingText = "";
     if (currentLang === 'en' && engravingTextEl) {
         engravingText = engravingTextEl.value;
-    } else if (currentLang === 'zh') {
-        const engravingTextZH = document.getElementById('engravingTextZH');
-        if (engravingTextZH) {
-            engravingText = engravingTextZH.value;
-        }
+    } else if (currentLang === 'zh' && engravingTextZHEl) {
+        engravingText = engravingTextZHEl.value;
     }
     
     const selectedGift = document.querySelector('.gift-option.selected');
@@ -1907,7 +1900,7 @@ function addToCart() {
         }
     }
     
-    const personalityInfo = translations[currentLang][userPersonality];
+    const personalityInfo = newYorkTranslations[currentLang][userPersonality];
     
     let message = currentLang === 'en' 
         ? `"${selectedPerfume}" has been added to cart!\n\n`
@@ -1937,4 +1930,4 @@ function addToCart() {
 }
 
 // 页面加载完成后初始化
-document.addEventListener('DOMContentLoaded', initShanghai);
+document.addEventListener('DOMContentLoaded', initNewYork);
