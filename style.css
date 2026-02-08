@@ -613,11 +613,47 @@ nav a:hover, nav .active {
 }
 
 /* 首页英雄区域 */
+/* 1. 为hero区域建立一个新的定位上下文，并移除原有背景图设置 */
 .hero {
     text-align: center;
     padding: 60px 20px 80px;
-    background: linear-gradient(135deg, rgba(198, 167, 118, 0.05) 0%, rgba(245, 245, 247, 1) 100%);
     margin-bottom: 60px;
+    position: relative; /* 关键：为内部绝对定位的子元素提供基准 */
+    /* 注意：这里不再设置 background-image */
+}
+
+/* 2. 创建一个专用于背景图的层 */
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/Users/chenxinyu/Desktop/欧莱雅/city_scent/images/index-background.jpg'); /* 你的背景图 */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.1; /* 核心：直接控制图片透明度，0.7表示70%不透明 */
+    z-index: 1; /* 位于hero底层，但在普通背景色之上 */
+}
+
+/* 3. 保留原有的深色遮罩层，并置于背景图层之上 */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0); /* 可独立调整遮罩深浅 */
+    z-index: 2; /* 位于背景图层之上 */
+}
+
+/* 4. 确保所有文字内容位于最顶层 */
+.hero > * {
+    position: relative;
+    z-index: 3;
 }
 
 .hero h1 {
@@ -681,17 +717,17 @@ nav a:hover, nav .active {
 
 .shanghai-img {
     background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), 
-                      url('https://images.unsplash.com/photo-1544984243-ec57ea16fe25?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+                      url('images/shanghai.jpg');
 }
 
 .newyork-img {
     background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), 
-                      url('https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+                      url('images/newyork.jpg');
 }
 
 .hongkong-img {
     background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), 
-                      url('https://images.unsplash.com/photo-1518599807935-37015b3ce98d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+                      url('images/hongkong.jpg');
 }
 
 .city-card-content {
@@ -747,11 +783,39 @@ nav a:hover, nav .active {
     font-weight: 500;
 }
 
+
+/* 2. 设置卡片本身为Flex容器，使其内容可灵活分配空间 */
+.city-card {
+    display: flex;           /* 新增 */
+    flex-direction: column;  /* 新增：使内容垂直排列 */
+    height: 100%;           /* 新增：继承网格所规定的高度 */
+    text-decoration: none;
+    color: inherit;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+/* 3. 卡片内容区域应占满所有可用空间，并将底部信息推向最下 */
+.city-card-content {
+    padding: 25px;
+    display: flex;           /* 新增 */
+    flex-direction: column;  /* 新增 */
+    flex-grow: 1;           /* 新增：关键！使内容区域填充卡片高度 */
+}
+
+/* 4. 将底部元信息区域固定在内容区底部 */
 .city-meta {
     display: flex;
     justify-content: space-between;
-    font-size: 12px;
-    color: #999;
+    align-items: center;
+    margin-top: auto;       /* 修改：将 '20px' 改为 'auto'，这是关键！ */
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+    font-size: 13px;
+    color: #666;
 }
 
 .city-meta i {

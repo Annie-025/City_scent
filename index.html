@@ -6,34 +6,283 @@
     <title>Maison Margiela · City Memory Fragrance Customization</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+    /* 人格说明界面样式 */
+    .personalities-section {
+        padding: 80px 20px;
+        background-color: #f8f9fa;
+        position: relative;
+    }
+    
+    .personalities-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* PC端：4列 */
+        gap: 30px;
+        margin-top: 40px;
+    }
+    
+    /* 平板端：2列 */
+    @media (max-width: 1200px) {
+        .personalities-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    
+    /* 移动端：1列 */
+    @media (max-width: 768px) {
+        .personalities-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+    
+    .personality-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .personality-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+    
+    .personality-header {
+        padding: 25px 25px 15px;
+        position: relative;
+        border-bottom: 1px solid #f0f0f0;
+    }
+    
+    .personality-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 15px;
+        font-size: 24px;
+    }
+    
+    .personality-title {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 10px;
+        color: var(--loreal-black);
+    }
+    
+    .personality-subtitle {
+        font-size: 14px;
+        color: var(--loreal-gold);
+        font-weight: 500;
+        margin-bottom: 15px;
+    }
+    
+    .personality-body {
+        padding: 20px 25px 25px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .personality-description {
+        font-size: 14px;
+        color: #666;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        flex: 1;
+    }
+    
+    .personality-traits {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+    
+    .trait-tag {
+        background-color: rgba(198, 167, 118, 0.1);
+        color: var(--loreal-gold);
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 500;
+    }
+    
+    .personality-quote {
+        font-style: italic;
+        color: #888;
+        border-left: 2px solid rgba(198, 167, 118, 0.3);
+        padding-left: 15px;
+        font-size: 14px;
+        line-height: 1.5;
+        margin-bottom: 20px;
+    }
+    
+    .personality-dimensions {
+        display: flex;
+        justify-content: space-between;
+        margin-top: auto;
+        padding-top: 15px;
+        border-top: 1px dashed #eee;
+    }
+    
+    .dimension {
+        text-align: center;
+        flex: 1;
+    }
+    
+    .dimension-label {
+        font-size: 11px;
+        color: #999;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 5px;
+    }
+    
+    .dimension-value {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--loreal-black);
+    }
+    
+    .personality-type-1 .personality-icon {
+        background-color: rgba(52, 152, 219, 0.1);
+        color: #3498db;
+    }
+    
+    .personality-type-2 .personality-icon {
+        background-color: rgba(46, 204, 113, 0.1);
+        color: #2ecc71;
+    }
+    
+    .personality-type-3 .personality-icon {
+        background-color: rgba(155, 89, 182, 0.1);
+        color: #9b59b6;
+    }
+    
+    .personality-type-4 .personality-icon {
+        background-color: rgba(241, 196, 15, 0.1);
+        color: #f1c40f;
+    }
+    
+    .personality-discover-btn {
+        display: inline-block;
+        margin-top: 20px;
+        color: var(--loreal-gold);
+        font-weight: 500;
+        text-decoration: none;
+        font-size: 14px;
+        transition: color 0.3s;
+        align-self: flex-start;
+    }
+    
+    .personality-discover-btn:hover {
+        color: var(--loreal-dark-gold);
+        text-decoration: underline;
+    }
+    
+    .personality-discover-btn i {
+        margin-left: 5px;
+        font-size: 12px;
+    }
+    
+    /* 平板和移动端优化 */
+    @media (max-width: 1200px) {
+        .personalities-grid {
+            gap: 20px;
+        }
+        
+        .personality-card {
+            height: auto;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .personalities-section {
+            padding: 60px 15px;
+        }
+        
+        .personality-card {
+            margin-bottom: 20px;
+        }
+        
+        .personality-header {
+            padding: 20px 20px 15px;
+        }
+        
+        .personality-body {
+            padding: 15px 20px 20px;
+        }
+        
+        .personality-title {
+            font-size: 18px;
+        }
+    }
+    
+    /* 调整其他部分的响应式布局 */
+    @media (max-width: 768px) {
+        .process-steps {
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .process-step {
+            flex-direction: row;
+            text-align: left;
+            align-items: flex-start;
+        }
+        
+        .step-number {
+            margin-right: 15px;
+            margin-bottom: 0;
+            flex-shrink: 0;
+        }
+        
+        .city-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        .feature-grid {
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+    }
+</style>
 </head>
 <body>
     <header>
-    <div class="header-left">
-        <a href="index.html" class="logo">
-            <i class="fas fa-gem"></i>
-            <span data-lang="en">Maison Margiela</span>
-            <span data-lang="zh" style="display:none;">梅森马吉拉</span>
-        </a>
-        
-        <!-- 语言切换按钮放在logo旁边 -->
-        <div class="language-switcher">
-            <button id="langToggle" class="btn-language">
-                <span data-lang="en">中文</span>
-                <span data-lang="zh" style="display:none;">English</span>
-            </button>
+        <div class="header-left">
+            <a href="index.html" class="logo">
+                <i class="fas fa-gem"></i>
+                <span data-lang="en">Maison Margiela</span>
+                <span data-lang="zh" style="display:none;">梅森马吉拉</span>
+            </a>
+            
+            <!-- 语言切换按钮放在logo旁边 -->
+            <div class="language-switcher">
+                <button id="langToggle" class="btn-language">
+                    <span data-lang="en">中文</span>
+                    <span data-lang="zh" style="display:none;">English</span>
+                </button>
+            </div>
         </div>
-    </div>
-    
-    <nav>
-        <ul>
-            <li><a href="index.html" class="active" data-lang="en">City Selection</a><span data-lang="zh" style="display:none;">城市选择</span></li>
-            <li><a href="#how-it-works" data-lang="en">How It Works</a><span data-lang="zh" style="display:none;">工作原理</span></li>
-            <li><a href="#collections" data-lang="en">Collections</a><span data-lang="zh" style="display:none;">产品系列</span></li>
-            <li><a href="#about" data-lang="en">About Us</a><span data-lang="zh" style="display:none;">关于我们</span></li>
-        </ul>
-    </nav>
-</header>
+        
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active" data-lang="en">City Selection</a><span data-lang="zh" style="display:none;">城市选择</span></li>
+                <li><a href="#how-it-works" data-lang="en">How It Works</a><span data-lang="zh" style="display:none;">工作原理</span></li>
+                <li><a href="#personalities" data-lang="en">Explorer Types</a><span data-lang="zh" style="display:none;">探索者类型</span></li>
+                <li><a href="#collections" data-lang="en">Collections</a><span data-lang="zh" style="display:none;">产品系列</span></li>
+                <li><a href="#about" data-lang="en">About Us</a><span data-lang="zh" style="display:none;">关于我们</span></li>
+            </ul>
+        </nav>
+    </header>
 
     <section class="hero">
         <h1 data-lang="en">City Memory · Personalized Fragrance</h1>
@@ -90,31 +339,31 @@
             </a>
             
             <!-- 纽约（原深圳） -->
-<a href="newyork.html" class="city-card">
-    <div class="city-card-image newyork-img"></div>
-    <div class="city-card-content">
-        <div class="city-card-header">
-            <h3 data-lang="en">New York</h3>
-            <h3 data-lang="zh" style="display:none;">纽约</h3>
-            <span class="city-status" data-lang="en">Available</span>
-            <span class="city-status" data-lang="zh" style="display:none;">已上线</span>
-        </div>
-        <p class="city-description" data-lang="en">Urban energy and multicultural fusion, the city that never sleeps</p>
-        <p class="city-description" data-lang="zh" style="display:none;">都市活力与多元文化融合，不眠之城的嗅觉记忆</p>
-        <div class="city-tags">
-            <span data-lang="en">Broadway Dreams</span>
-            <span data-lang="zh" style="display:none;">百老汇梦想</span>
-            <span data-lang="en">Central Park</span>
-            <span data-lang="zh" style="display:none;">中央公园</span>
-            <span data-lang="en">Urban Fusion</span>
-            <span data-lang="zh" style="display:none;">都市融合</span>
-        </div>
-        <div class="city-meta">
-            <span><i class="far fa-clock"></i> <span data-lang="en">3-min test</span><span data-lang="zh" style="display:none;">3分钟测试</span></span>
-            <span><i class="fas fa-gift"></i> <span data-lang="en">Gift scent card/diffuser stone</span><span data-lang="zh" style="display:none;">赠香片/扩香石</span></span>
-        </div>
-    </div>
-</a>
+            <a href="newyork.html" class="city-card">
+                <div class="city-card-image newyork-img"></div>
+                <div class="city-card-content">
+                    <div class="city-card-header">
+                        <h3 data-lang="en">New York</h3>
+                        <h3 data-lang="zh" style="display:none;">纽约</h3>
+                        <span class="city-status" data-lang="en">Available</span>
+                        <span class="city-status" data-lang="zh" style="display:none;">已上线</span>
+                    </div>
+                    <p class="city-description" data-lang="en">Urban energy and multicultural fusion, the city that never sleeps</p>
+                    <p class="city-description" data-lang="zh" style="display:none;">都市活力与多元文化融合，不眠之城的嗅觉记忆</p>
+                    <div class="city-tags">
+                        <span data-lang="en">Broadway Dreams</span>
+                        <span data-lang="zh" style="display:none;">百老汇梦想</span>
+                        <span data-lang="en">Central Park</span>
+                        <span data-lang="zh" style="display:none;">中央公园</span>
+                        <span data-lang="en">Urban Fusion</span>
+                        <span data-lang="zh" style="display:none;">都市融合</span>
+                    </div>
+                    <div class="city-meta">
+                        <span><i class="far fa-clock"></i> <span data-lang="en">3-min test</span><span data-lang="zh" style="display:none;">3分钟测试</span></span>
+                        <span><i class="fas fa-gift"></i> <span data-lang="en">Gift scent card/diffuser stone</span><span data-lang="zh" style="display:none;">赠香片/扩香石</span></span>
+                    </div>
+                </div>
+            </a>
             
             <!-- 香港 -->
             <a href="hongkong.html" class="city-card">
@@ -180,6 +429,196 @@
                     <p data-lang="en">Based on test results, AI algorithm recommends the most matching city fragrance, with customizable bottle engraving and limited gifts.</p>
                     <p data-lang="zh" style="display:none;">基于测试结果，AI算法为您推荐最匹配的城市香氛，并可定制瓶身刻字和选择限量赠礼。</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="personalities-section" id="personalities">
+        <div class="container">
+            <h2 class="section-title" data-lang="en">City Explorer Personality Types</h2>
+            <h2 class="section-title" data-lang="zh" style="display:none;">城市探索者人格类型</h2>
+            <p class="section-subtitle" data-lang="en">Discover your urban explorer profile based on the two-dimensional personality system</p>
+            <p class="section-subtitle" data-lang="zh" style="display:none;">基于二维人格系统，发现您的城市探索者档案</p>
+            
+            <div class="personalities-grid">
+                <!-- 历史测绘者 -->
+                <div class="personality-card personality-type-1">
+                    <div class="personality-header">
+                        <div class="personality-icon">
+                            <i class="fas fa-mountain"></i>
+                        </div>
+                        <h3 class="personality-title" data-lang="en">Historical Surveyor</h3>
+                        <h3 class="personality-title" data-lang="zh" style="display:none;">历史测绘者</h3>
+                        <div class="personality-subtitle" data-lang="en">Connection + Rational</div>
+                        <div class="personality-subtitle" data-lang="zh" style="display:none;">归属 + 理性</div>
+                    </div>
+                    <div class="personality-body">
+                        <p class="personality-description" data-lang="en">Mapping the vertical city from strategic heights, measuring the pulse of compressed spaces through precise observation and calculated perspectives.</p>
+                        <p class="personality-description" data-lang="zh" style="display:none;">从战略高度绘制垂直城市，通过精确观察和计算视角测量压缩空间的脉搏。</p>
+                        
+                        <div class="personality-traits">
+                            <span class="trait-tag" data-lang="en">Urban Surveyor</span>
+                            <span class="trait-tag" data-lang="zh" style="display:none;">都市测绘师</span>
+                            <span class="trait-tag" data-lang="en">Vertical Mapper</span>
+                            <span class="trait-tag" data-lang="zh" style="display:none;">垂直绘图师</span>
+                            <span class="trait-tag" data-lang="en">Strategic Heights</span>
+                            <span class="trait-tag" data-lang="zh" style="display:none;">战略高度</span>
+                        </div>
+                        
+                        <p class="personality-quote" data-lang="en">"From the Peak, the city unfolds like a living map - every light a story, every density a history."</p>
+                        <p class="personality-quote" data-lang="zh" style="display:none;">"从山顶望去，城市展开如同一幅活地图——每盏灯都是一个故事，每个密度都是一段历史。"</p>
+                        
+                        <div class="personality-dimensions">
+                            <div class="dimension">
+                                <div class="dimension-label" data-lang="en">Connection</div>
+                                <div class="dimension-label" data-lang="zh" style="display:none;">归属导向</div>
+                                <div class="dimension-value">High</div>
+                            </div>
+                            <div class="dimension">
+                                <div class="dimension-label" data-lang="en">Interaction</div>
+                                <div class="dimension-label" data-lang="zh" style="display:none;">理性导向</div>
+                                <div class="dimension-value">Rational</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 心灵考古者 -->
+                <div class="personality-card personality-type-2">
+                    <div class="personality-header">
+                        <div class="personality-icon">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <h3 class="personality-title" data-lang="en">Soul Archaeologist</h3>
+                        <h3 class="personality-title" data-lang="zh" style="display:none;">心灵考古者</h3>
+                        <div class="personality-subtitle" data-lang="en">Connection + Emotional</div>
+                        <div class="personality-subtitle" data-lang="zh" style="display:none;">归属 + 感性</div>
+                    </div>
+                    <div class="personality-body">
+                        <p class="personality-description" data-lang="en">Excavating the memories of dense urban spaces, where history meets emotion, and every layer reveals stories waiting to be remembered.</p>
+                        <p class="personality-description" data-lang="zh" style="display:none;">挖掘密集都市空间的记忆，历史遇见情感，每一层都揭示等待被铭记的故事。</p>
+                        
+                        <div class="personality-traits">
+                            <span class="trait-tag" data-lang="en">Urban Archaeology</span>
+                            <span class="trait-tag" data-lang="zh" style="display:none;">都市考古</span>
+                            <span class="trait-tag" data-lang="en">Compressed Memory</span>
+                            <span class="trait-tag" data-lang="zh" style="display:none;">压缩记忆</span>
+                            <span class="trait-tag" data-lang="en">Emotional Depth</span>
+                            <span class="trait-tag" data-lang="zh" style="display:none;">情感深度</span>
+                        </div>
+                        
+                        <p class="personality-quote" data-lang="en">"In compressed history, every demolition reveals another layer waiting to be remembered."</p>
+                        <p class="personality-quote" data-lang="zh" style="display:none;">"在压缩的历史中，每一次拆除都揭示另一层等待被铭记的往事。"</p>
+                        
+                        <div class="personality-dimensions">
+                            <div class="dimension">
+                                <div class="dimension-label" data-lang="en">Connection</div>
+                                <div class="dimension-label" data-lang="zh" style="display:none;">归属导向</div>
+                                <div class="dimension-value">High</div>
+                            </div>
+                            <div class="dimension">
+                                <div class="dimension-label" data-lang="en">Interaction</div>
+                                <div class="dimension-label" data-lang="zh" style="display:none;">感性导向</div>
+                                <div class="dimension-value">Emotional</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 永恒漂泊者 -->
+                <div class="personality-card personality-type-3">
+                    <div class="personality-header">
+                        <div class="personality-icon">
+                            <i class="fas fa-anchor"></i>
+                        </div>
+                        <h3 class="personality-title" data-lang="en">Eternal Wanderer</h3>
+                        <h3 class="personality-title" data-lang="zh" style="display:none;">永恒漂泊者</h3>
+                        <div class="personality-subtitle" data-lang="en">Exploration + Emotional</div>
+                        <div class="personality-subtitle" data-lang="zh" style="display:none;">探索 + 感性</div>
+                    </div>
+                    <div class="personality-body">
+                        <p class="personality-description" data-lang="en">Finding home in the rhythm of transit and tides, where salt-stained journeys hold the scent of distant ports and perpetual waiting.</p>
+                        <p class="personality-description" data-lang="zh" style="display:none;">在运输与潮汐的节奏中找到家，盐渍旅程承载着远方港口和永恒等待的气息。</p>
+                        
+                        <div class="personality-traits">
+                            <span class="trait-tag" data-lang="en">Cargo Rhythm</span>
+                            <span class="trait-tag" data-lang="zh" style="display:none;">货物节奏</span>
+                            <span class="trait-tag" data-lang="en">Tidal Waiting</span>
+                            <span class="trait-tag" data-lang="zh" style="display:none;">潮汐等待</span>
+                            <span class="trait-tag" data-lang="en">Perpetual Transit</span>
+                            <span class="trait-tag" data-lang="zh" style="display:none;">永续过渡</span>
+                        </div>
+                        
+                        <p class="personality-quote" data-lang="en">"Cities were built on arrivals and departures - their soul is written in schedules and tide tables."</p>
+                        <p class="personality-quote" data-lang="zh" style="display:none;">"城市建立在到达与离开之上——它们的灵魂写在船期表和潮汐表中。"</p>
+                        
+                        <div class="personality-dimensions">
+                            <div class="dimension">
+                                <div class="dimension-label" data-lang="en">Connection</div>
+                                <div class="dimension-label" data-lang="zh" style="display:none;">探索导向</div>
+                                <div class="dimension-value">Low</div>
+                            </div>
+                            <div class="dimension">
+                                <div class="dimension-label" data-lang="en">Interaction</div>
+                                <div class="dimension-label" data-lang="zh" style="display:none;">感性导向</div>
+                                <div class="dimension-value">Emotional</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 旧时梦境师 -->
+                <div class="personality-card personality-type-4">
+                    <div class="personality-header">
+                        <div class="personality-icon">
+                            <i class="fas fa-moon"></i>
+                        </div>
+                        <h3 class="personality-title" data-lang="en">Dreamweaver</h3>
+                        <h3 class="personality-title" data-lang="zh" style="display:none;">旧时梦境师</h3>
+                        <div class="personality-subtitle" data-lang="en">Exploration + Rational</div>
+                        <div class="personality-subtitle" data-lang="zh" style="display:none;">探索 + 理性</div>
+                    </div>
+                    <div class="personality-body">
+                        <p class="personality-description" data-lang="en">Overlaying urban reality with moonlit legends, where night blooms in mountain dew, and city lights become kingdoms of imagination below.</p>
+                        <p class="personality-description" data-lang="zh" style="display:none;">用月光传奇覆盖都市现实，夜兰在山露中绽放，城市灯火在下方成为想象王国。</p>
+                        
+                        <div class="personality-traits">
+                            <span class="trait-tag" data-lang="en">Moonlit Legends</span>
+                            <span class="trait-tag" data-lang="zh" style="display:none;">月光传奇</span>
+                            <span class="trait-tag" data-lang="en">Vertical Dreams</span>
+                            <span class="trait-tag" data-lang="zh" style="display:none;">垂直梦境</span>
+                            <span class="trait-tag" data-lang="en">Imagination Throne</span>
+                            <span class="trait-tag" data-lang="zh" style="display:none;">想象王座</span>
+                        </div>
+                        
+                        <p class="personality-quote" data-lang="en">"In vertical dreams, every skyscraper is a castle, every peak a throne of imagination."</p>
+                        <p class="personality-quote" data-lang="zh" style="display:none;">"在垂直梦境中，每座摩天大楼都是一座城堡，每个山顶都是想象的王座。"</p>
+                        
+                        <div class="personality-dimensions">
+                            <div class="dimension">
+                                <div class="dimension-label" data-lang="en">Connection</div>
+                                <div class="dimension-label" data-lang="zh" style="display:none;">探索导向</div>
+                                <div class="dimension-value">Low</div>
+                            </div>
+                            <div class="dimension">
+                                <div class="dimension-label" data-lang="en">Interaction</div>
+                                <div class="dimension-label" data-lang="zh" style="display:none;">理性导向</div>
+                                <div class="dimension-value">Rational</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="personality-explanation" style="margin-top: 40px; text-align: center;">
+                <p data-lang="en" style="color: #666; max-width: 800px; margin: 0 auto;">
+                    <i class="fas fa-info-circle" style="color: var(--loreal-gold);"></i> 
+                    The two-dimensional personality system analyzes your connection to cities (Exploration vs. Belonging) and your interaction style (Rational vs. Emotional). Each city test reveals which of these four explorer types best represents your urban experience.
+                </p>
+                <p data-lang="zh" style="display:none; color: #666; max-width: 800px; margin: 0 auto;">
+                    <i class="fas fa-info-circle" style="color: var(--loreal-gold);"></i> 
+                    二维人格系统分析您与城市的连接方式（探索vs归属）和互动风格（理性vs感性）。每个城市测试将揭示这四种探索者类型中哪一种最能代表您的城市体验。
+                </p>
             </div>
         </div>
     </section>
@@ -257,14 +696,14 @@
                 </ul>
             </div>
             
-        <div class="footer-section">
-            <h4 data-lang="en">L'Oréal City Memory Project</h4>
-            <h4 data-lang="zh" style="display:none;">欧莱雅城市记忆项目</h4>
-            <p data-lang="en">Personalized fragrance customization based on neuroscience, cultural research and AI technology.</p>
-            <p data-lang="zh" style="display:none;">基于神经科学、文化研究与AI技术的个性化香氛定制方案。</p>
-            <p data-lang="en" Debut: Shanghai, New York, Hong Kong</p>
-            <p data-lang="zh" style="display:none;">首发三城：上海、纽约、香港</p>
-        </div>
+            <div class="footer-section">
+                <h4 data-lang="en">L'Oréal City Memory Project</h4>
+                <h4 data-lang="zh" style="display:none;">欧莱雅城市记忆项目</h4>
+                <p data-lang="en">Personalized fragrance customization based on neuroscience, cultural research and AI technology.</p>
+                <p data-lang="zh" style="display:none;">基于神经科学、文化研究与AI技术的个性化香氛定制方案。</p>
+                <p data-lang="en">Debut: Shanghai, New York, Hong Kong</p>
+                <p data-lang="zh" style="display:none;">首发三城：上海、纽约、香港</p>
+            </div>
         </div>
         
         <div class="footer-bottom">
