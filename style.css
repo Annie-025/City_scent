@@ -2018,6 +2018,160 @@ footer {
 
 /* 响应式调整 */
 @media (max-width: 768px) {
+    /* 头部样式 */
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        padding: 20px 0;
+    }
+    
+    .header-left {
+        width: 100%;
+        justify-content: space-between;
+        min-width: auto;
+        gap: 15px;
+    }
+    
+    nav {
+        width: 100%;
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 10px;
+    }
+    
+    nav ul {
+        gap: 15px;
+        min-width: max-content;
+    }
+    
+    nav a {
+        font-size: 15px;
+    }
+    
+    .logo {
+        font-size: 24px;
+    }
+    
+    /* 英雄区域 */
+    .hero h1 {
+        font-size: 36px;
+    }
+    
+    .hero p {
+        font-size: 18px;
+    }
+    
+    /* 通用部分 */
+    .section-title {
+        font-size: 28px;
+    }
+    
+    .city-test, .results-container {
+        padding: 30px 20px;
+    }
+    
+    /* 问题样式 */
+    .question {
+        font-size: 20px;
+        margin-bottom: 12px;
+    }
+    
+    .question-hint {
+        font-size: 14px;
+        margin-bottom: 30px;
+    }
+    
+    /* 选项样式 - 改为两列布局 */
+    .options {
+        grid-template-columns: 1fr 1fr; /* 改为两列 */
+        gap: 12px; /* 减少间距以节省空间 */
+        margin-bottom: 30px;
+    }
+    
+    .option-card {
+        padding: 20px 12px; /* 减少内边距 */
+        min-height: 160px; /* 设置最小高度确保一致性 */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .option-icon {
+        font-size: 24px; /* 缩小图标 */
+        margin-bottom: 10px;
+    }
+    
+    .option-card > div > div:first-child {
+        font-size: 14px; /* 缩小选项文本 */
+        line-height: 1.4;
+    }
+    
+    .question-explanation {
+        display: none; /* 在移动端隐藏解释文本 */
+        font-size: 12px;
+        margin-top: 5px;
+    }
+    
+    /* 过程步骤 */
+    .process-step {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .step-number {
+        margin-bottom: 15px;
+    }
+    
+    /* 购买按钮 */
+    .purchase-buttons {
+        flex-direction: column;
+    }
+    
+    .purchase-buttons .btn {
+        width: 100%;
+        margin-bottom: 15px;
+        margin-left: 0;
+    }
+    
+    /* 导航按钮 */
+    .test-navigation {
+        margin-top: 30px;
+    }
+    
+    .btn {
+        padding: 12px 24px;
+        font-size: 16px;
+    }
+    
+    /* 额外的小屏幕调整 */
+    .header-left {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .language-switcher {
+        align-self: flex-start;
+    }
+    
+    nav ul {
+        gap: 10px;
+    }
+    
+    nav a {
+        font-size: 14px;
+    }
+    
+    .btn-language {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+    
+    /* 分享平台调整 */
     .share-platforms {
         grid-template-columns: 1fr;
     }
@@ -2036,6 +2190,24 @@ footer {
     .purchase-buttons .btn-share {
         width: 100%;
         margin: 0 0 15px 0;
+    }
+    
+    /* 香水推荐卡片 */
+    .recommendation-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+    
+    .scent-image {
+        margin-right: 0;
+        margin-bottom: 20px;
+        width: 120px;
+        height: 120px;
+    }
+    
+    .scent-notes {
+        justify-content: center;
     }
 }
 /* 确保按钮可点击 */
