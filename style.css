@@ -634,7 +634,7 @@ nav a:hover, nav .active {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    opacity: 0.1; /* 核心：直接控制图片透明度，0.7表示70%不透明 */
+    opacity: 0.3; /* 核心：直接控制图片透明度，0.7表示70%不透明 */
     z-index: 1; /* 位于hero底层，但在普通背景色之上 */
 }
 
