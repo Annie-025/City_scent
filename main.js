@@ -33,7 +33,7 @@ const indexTranslations = {
         "testTime": "3-min test",
         "giftText": "Gift scent card/diffuser stone",
         
-   // 城市卡片 - 纽约（原深圳）
+        // 城市卡片 - 纽约（原深圳）
         "newyork": "New York",
         "newyorkStatus": "Available",
         "newyorkDesc": "Urban energy and multicultural fusion, the city that never sleeps",
@@ -116,7 +116,7 @@ const indexTranslations = {
         "testTime": "3分钟测试",
         "giftText": "赠香片/扩香石",
         
-      // 城市卡片 - 纽约（原深圳）
+        // 城市卡片 - 纽约（原深圳）
         "newyork": "纽约",
         "newyorkStatus": "已上线",
         "newyorkDesc": "都市活力与多元文化融合，不眠之城的嗅觉记忆",
@@ -172,26 +172,24 @@ const indexTranslations = {
 // 全局变量
 let currentLang = 'en'; // 默认英文
 
-// 语言切换函数
-function toggleLanguage() {
-    // 切换语言
-    currentLang = currentLang === 'en' ? 'zh' : 'en';
-    
-    // 更新语言切换按钮文本
-    updateLanguageToggle();
-    
-    // 更新所有带data-lang属性的元素
-    updatePageText();
-    
-    // 保存语言偏好到localStorage
-    localStorage.setItem('siteLanguage', currentLang);
-}
+// ========== 新增：下拉菜单选项文本映射 ==========
+const selectOptionsMap = {
+    city: {
+        en: ['Shanghai', 'New York', 'Hong Kong'],
+        zh: ['上海', '纽约', '香港']
+    },
+    explorer: {
+        en: ['Historical Surveyor', 'Soul Archaeologist', 'Eternal Wanderer', 'Dreamweaver'],
+        zh: ['历史测绘者', '心灵考古者', '永恒漂泊者', '旧时梦境师']
+    }
+};
 
-// 在main.js中添加更新语言切换按钮文本的函数
+// ========== 语言切换相关函数 ==========
+
+// 更新语言切换按钮文本
 function updateLanguageToggle() {
     const toggleBtn = document.getElementById('langToggle');
     if (toggleBtn) {
-        // 切换按钮内的文本
         const spans = toggleBtn.querySelectorAll('span[data-lang]');
         spans.forEach(span => {
             if (span.getAttribute('data-lang') === currentLang) {
@@ -203,7 +201,7 @@ function updateLanguageToggle() {
     }
 }
 
-// 更新页面静态文本
+// 更新页面静态文本（基于 data-lang 属性）
 function updatePageText() {
     // 更新页面标题
     if (currentLang === 'en') {
@@ -212,13 +210,12 @@ function updatePageText() {
         document.title = "梅森马吉拉 · 城市记忆香氛定制";
     }
     
-    // 更新所有带data-lang属性的元素
+    // 更新所有带 data-lang 属性的元素
     document.querySelectorAll('[data-lang]').forEach(element => {
         const langKey = element.getAttribute('data-lang');
         if (langKey === currentLang) {
             element.style.display = element.tagName === 'SPAN' ? 'inline' : 'block';
             if (element.tagName === 'A' && element.parentElement.tagName === 'LI') {
-                // 导航链接特殊处理
                 element.style.display = 'inline';
             }
         } else {
@@ -226,7 +223,7 @@ function updatePageText() {
         }
     });
     
-    // 特殊处理导航中的span元素
+    // 特殊处理导航中的 span 元素
     document.querySelectorAll('nav li span[data-lang]').forEach(span => {
         if (span.getAttribute('data-lang') === currentLang) {
             span.style.display = 'inline';
@@ -234,6 +231,49 @@ function updatePageText() {
             span.style.display = 'none';
         }
     });
+}
+
+// 更新下拉菜单选项文本（新增）
+function updateSelectOptions() {
+    const citySelect = document.getElementById('citySelect');
+    if (citySelect) {
+        const cityOptions = citySelect.querySelectorAll('option');
+        const cityTexts = selectOptionsMap.city[currentLang] || selectOptionsMap.city.en;
+        cityOptions.forEach((option, index) => {
+            if (index < cityTexts.length) {
+                option.textContent = cityTexts[index];
+            }
+        });
+    }
+
+    const explorerSelect = document.getElementById('explorerSelect');
+    if (explorerSelect) {
+        const explorerOptions = explorerSelect.querySelectorAll('option');
+        const explorerTexts = selectOptionsMap.explorer[currentLang] || selectOptionsMap.explorer.en;
+        explorerOptions.forEach((option, index) => {
+            if (index < explorerTexts.length) {
+                option.textContent = explorerTexts[index];
+            }
+        });
+    }
+}
+
+// 切换语言
+function toggleLanguage() {
+    // 切换语言
+    currentLang = currentLang === 'en' ? 'zh' : 'en';
+    
+    // 更新语言切换按钮文本
+    updateLanguageToggle();
+    
+    // 更新所有带 data-lang 属性的元素
+    updatePageText();
+
+    // 新增：更新下拉菜单选项文本
+    updateSelectOptions();
+    
+    // 保存语言偏好到 localStorage
+    localStorage.setItem('siteLanguage', currentLang);
 }
 
 // 初始化语言
@@ -247,9 +287,50 @@ function initLanguage() {
     // 初始语言设置
     updateLanguageToggle();
     updatePageText();
+    updateSelectOptions(); // 新增：确保下拉菜单初始文本正确
 }
 
-// 简单的初始化函数
+// ========== 日期设置函数 ==========
+function setCurrentDate() {
+    const dateField = document.getElementById('currentDate');
+    if (dateField) {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const day = String(today.getDate()).padStart(2, '0');
+        dateField.value = `${year}-${month}-${day}`;
+    }
+}
+
+// ========== 车票展开/折叠交互 ==========
+function initTicket() {
+    const folded = document.getElementById('foldedTicket');
+    const expanded = document.getElementById('expandedTicket');
+    if (!folded || !expanded) return;
+
+    folded.addEventListener('click', function() {
+        expanded.classList.add('show');
+        folded.style.opacity = '0.3';
+        folded.style.pointerEvents = 'none';
+        expanded.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    const sendBtn = document.getElementById('sendStoryBtn');
+    if (sendBtn) {
+        sendBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const lang = currentLang || 'en';
+            if (lang === 'en') {
+                alert('✧ Your story has been sealed with a city memory postmark! ✧');
+            } else {
+                alert('✧ 你的故事已盖上城市记忆的邮戳！✧');
+            }
+            // 可在此添加重置或收起逻辑
+        });
+    }
+}
+
+// ========== 主初始化函数 ==========
 function initMain() {
     // 初始化语言
     initLanguage();
@@ -294,5 +375,9 @@ function initMain() {
     console.log('L\'Oréal City Memory Fragrance Customization - Main page loaded');
 }
 
-// 页面加载完成后初始化
-document.addEventListener('DOMContentLoaded', initMain);
+// ========== 页面加载完成后执行 ==========
+document.addEventListener('DOMContentLoaded', function() {
+    initMain();
+    setCurrentDate();   // 设置当前日期
+    initTicket();       // 初始化车票交互
+});

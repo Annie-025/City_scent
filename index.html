@@ -669,7 +669,89 @@
             </div>
         </div>
     </section>
+    <!-- ===== 城市探索车票 ===== -->
+<!-- ===== 城市记忆车票（升级版） ===== -->
+<section class="ticket-section">
+    <div class="container ticket-container">
+        <!-- 折叠状态（复古信封） -->
+        <div class="ticket-folded" id="foldedTicket">
+            <div class="folded-content">
+                <div class="folded-icon">
+                    <i class="fas fa-envelope-open-text"></i>
+                </div>
+                <div class="folded-text">
+                    <h3 data-lang="en">✧ City Memory Ticket ✧</h3>
+                    <h3 data-lang="zh" style="display:none;">✧ 城市记忆车票 ✧</h3>
+                    <p data-lang="en"><i class="fas fa-ticket-alt"></i> Click to reveal your explorer pass</p>
+                    <p data-lang="zh" style="display:none;"><i class="fas fa-ticket-alt"></i> 点击展开探索者凭证</p>
+                </div>
+            </div>
+            <div class="folded-arrow">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
 
+        <!-- 展开状态车票（含香水瓶+邮戳） -->
+        <div class="ticket-expanded" id="expandedTicket">
+            <!-- 顶部：香水瓶和邮戳 -->
+            <div class="ticket-header">
+                <div class="ticket-perfume">
+                    <i class="fas fa-flask"></i>
+                    <span data-lang="en">L'ORÉAL · CITY MEMORY</span>
+                    <span data-lang="zh" style="display:none;">欧莱雅 · 城市记忆</span>
+                </div>
+                <div class="ticket-stamp" data-lang="en">EXPLORER</div>
+                <div class="ticket-stamp" data-lang="zh" style="display:none;">探索者</div>
+            </div>
+
+            <!-- 车票表单（所有选项已正确双语） -->
+            <div class="ticket-body">
+                <div class="ticket-field scented">
+                    <label><i class="fas fa-user"></i> <span data-lang="en">Explorer Name</span><span data-lang="zh" style="display:none;">探索者昵称</span></label>
+                    <input type="text" placeholder="e.g., Night Wanderer" data-lang="en" class="lang-placeholder">
+                    <input type="text" placeholder="例如：夜行者" data-lang="zh" style="display:none;" class="lang-placeholder">
+                </div>
+                <div class="ticket-field">
+                    <label><i class="fas fa-map-pin"></i> <span data-lang="en">Destination City</span><span data-lang="zh" style="display:none;">目的城市</span></label>
+                  <!-- 目的城市下拉菜单（简化版） -->
+                    <select id="citySelect">
+                        <option value="shanghai">Shanghai</option>
+                        <option value="newyork">New York</option>
+                        <option value="hongkong">Hong Kong</option>
+                    </select>
+                </div>
+                <div class="ticket-field scented">
+                    <label><i class="fas fa-mask"></i> <span data-lang="en">Explorer Type</span><span data-lang="zh" style="display:none;">探索者类型</span></label>
+                    <select id="explorerSelect">
+                        <option value="historian">Historical Surveyor</option>
+                        <option value="archaeologist">Soul Archaeologist</option>
+                        <option value="wanderer">Eternal Wanderer</option>
+                        <option value="dreamer">Dreamweaver</option>
+                    </select>
+                </div>
+                <div class="ticket-field">
+                    <label><i class="fas fa-calendar-alt"></i> <span data-lang="en">Date of Exploration</span><span data-lang="zh" style="display:none;">探索日期</span></label>
+                    <input type="text" id="currentDate" readonly>
+                </div>
+                <div class="ticket-field full-width">
+                    <label><i class="fas fa-feather-alt"></i> <span data-lang="en">Exploration Notes</span><span data-lang="zh" style="display:none;">探索心得</span></label>
+                    <textarea rows="4" placeholder="What did you feel in this city... (e.g., The scent of rain on old streets...)" data-lang="en"></textarea>
+                    <textarea rows="4" placeholder="你在这座城市感受到了什么……（例如：老街雨后的气息……）" data-lang="zh" style="display:none;"></textarea>
+                </div>
+            </div>
+
+            <!-- 底部：邮戳 + 香水滴按钮 -->
+            <div class="ticket-footer">
+                <button class="btn-perfume" id="sendStoryBtn">
+                    <i class="fas fa-paper-plane"></i>
+                    <span data-lang="en">Send Story</span>
+                    <span data-lang="zh" style="display:none;">寄出故事</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+ 
     <footer id="about">
         <div class="footer-content">
             <div class="footer-section">

@@ -634,7 +634,7 @@ nav a:hover, nav .active {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    opacity: 0.3; /* 核心：直接控制图片透明度，0.7表示70%不透明 */
+    opacity: 0.1; /* 核心：直接控制图片透明度，0.7表示70%不透明 */
     z-index: 1; /* 位于hero底层，但在普通背景色之上 */
 }
 
@@ -2424,5 +2424,463 @@ nav li span[data-lang] {
     
     nav ul {
         gap: 10px;
+    }
+}
+/* ===== 城市记忆车票（升级版） ===== */
+.ticket-section {
+    padding: 80px 20px;
+    background: #f7f3ef url('data:image/svg+xml;utf8,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><circle cx="30" cy="30" r="2" fill="%23c6a776" opacity="0.1"/><circle cx="10" cy="10" r="1.5" fill="%23c6a776" opacity="0.1"/><circle cx="50" cy="20" r="2" fill="%23c6a776" opacity="0.1"/></svg>'); /* 香水喷雾颗粒背景 */
+    position: relative;
+    overflow: hidden;
+}
+
+.ticket-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at 30% 40%, rgba(198,167,118,0.08) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.ticket-container {
+    max-width: 820px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+/* ---------- 折叠状态（复古信封） ---------- */
+.ticket-folded {
+    background: #fffcf8;
+    border-radius: 30px 30px 30px 30px;
+    box-shadow: 0 20px 35px rgba(0,0,0,0.15), inset 0 1px 4px rgba(255,255,255,0.8);
+    padding: 30px 35px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    border: 1px solid rgba(198,167,118,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+    backdrop-filter: blur(2px);
+    /* 邮票齿孔效果 */
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 8px, rgba(198,167,118,0.2) 8px, rgba(198,167,118,0.2) 10px);
+    background-size: 20px 20px;
+}
+
+.ticket-folded::after {
+    content: '';
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="none" stroke="%23c6a776" stroke-width="2" stroke-dasharray="6 4" opacity="0.3"/><text x="50" y="60" font-size="14" text-anchor="middle" fill="%23c6a776" font-family="Georgia" opacity="0.3">CITY</text><text x="50" y="75" font-size="14" text-anchor="middle" fill="%23c6a776" font-family="Georgia" opacity="0.3">MEMORY</text></svg>');
+    background-size: contain;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.ticket-folded:hover {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 30px 45px rgba(198,167,118,0.3);
+    border-color: var(--loreal-gold);
+}
+
+.folded-content {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.folded-icon {
+    font-size: 56px;
+    color: var(--loreal-gold);
+    filter: drop-shadow(0 5px 12px rgba(198,167,118,0.4));
+    position: relative;
+}
+
+.folded-icon i {
+    transform: rotate(-8deg);
+}
+
+.folded-icon::before {
+    content: '✧';
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    font-size: 30px;
+    color: rgba(198,167,118,0.4);
+    transform: rotate(20deg);
+}
+
+.folded-text h3 {
+    font-size: 28px;
+    font-weight: 400;
+    margin-bottom: 6px;
+    color: #2c2c2c;
+    letter-spacing: 1px;
+}
+
+.folded-text p {
+    color: #7a6a5a;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(198,167,118,0.1);
+    padding: 6px 15px;
+    border-radius: 40px;
+}
+
+.folded-text p i {
+    color: var(--loreal-gold);
+}
+
+.folded-arrow {
+    font-size: 30px;
+    color: var(--loreal-gold);
+    opacity: 0.7;
+    transition: transform 0.3s;
+    animation: bounceArrow 2s infinite;
+}
+
+@keyframes bounceArrow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+}
+
+.ticket-folded:hover .folded-arrow {
+    transform: translateX(10px);
+    opacity: 1;
+    animation: none;
+}
+
+/* ---------- 展开状态车票（复古邮戳+香水瓶） ---------- */
+.ticket-expanded {
+    background: #fffcf5;
+    border-radius: 40px 40px 40px 40px;
+    box-shadow: 0 30px 55px rgba(0,0,0,0.2), inset 0 0 0 1px rgba(255,255,255,0.8);
+    padding: 35px 40px 40px;
+    position: relative;
+    z-index: 10;
+    border: 2px solid #b59762;
+    transform-origin: top center;
+    animation: ticketUnfold 0.6s ease-out forwards;
+    display: none;
+    /* 邮票齿孔外框 */
+    outline: 2px dashed rgba(198,167,118,0.3);
+    outline-offset: 8px;
+}
+
+.ticket-expanded.show {
+    display: block;
+}
+
+@keyframes ticketUnfold {
+    0% {
+        opacity: 0;
+        transform: rotateX(-18deg) scale(0.92) translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: rotateX(0) scale(1) translateY(0);
+    }
+}
+
+/* 邮戳水印（背景） */
+.ticket-expanded::before {
+    content: '';
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 150px;
+    height: 150px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><circle cx="100" cy="100" r="85" fill="none" stroke="%23c6a776" stroke-width="6" stroke-dasharray="8 6" opacity="0.15"/><circle cx="100" cy="100" r="65" fill="none" stroke="%23c6a776" stroke-width="2" opacity="0.1"/><text x="100" y="120" font-size="26" text-anchor="middle" fill="%23c6a776" font-family="Georgia" opacity="0.15" letter-spacing="4">CITY</text><text x="100" y="150" font-size="26" text-anchor="middle" fill="%23c6a776" font-family="Georgia" opacity="0.15">MEMORY</text></svg>');
+    background-size: contain;
+    opacity: 0.5;
+    pointer-events: none;
+    transform: rotate(-8deg);
+}
+
+/* 香水瓶装饰（左侧） */
+.ticket-expanded::after {
+    content: '';
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 100px;
+    height: 140px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 140"><rect x="25" y="20" width="50" height="80" rx="10" ry="10" fill="none" stroke="%23c6a776" stroke-width="2" opacity="0.25"/><rect x="35" y="10" width="30" height="15" rx="5" ry="5" fill="none" stroke="%23c6a776" stroke-width="2" opacity="0.25"/><circle cx="50" cy="60" r="8" fill="%23c6a776" opacity="0.15"/><path d="M45 85 L55 85 L52 95 L48 95 Z" fill="%23c6a776" opacity="0.15"/></svg>');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.4;
+    transform: rotate(5deg);
+    pointer-events: none;
+}
+
+/* 顶部：香水瓶+邮戳 */
+.ticket-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 35px;
+    border-bottom: 2px solid rgba(198,167,118,0.3);
+    padding-bottom: 15px;
+    position: relative;
+}
+
+.ticket-perfume {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.ticket-perfume i {
+    font-size: 48px;
+    color: var(--loreal-gold);
+    transform: rotate(-10deg) scaleX(-1);
+    filter: drop-shadow(0 8px 12px rgba(198,167,118,0.5));
+    transition: transform 0.3s;
+}
+
+.ticket-perfume:hover i {
+    transform: rotate(-5deg) scaleX(-1) translateY(-3px);
+}
+
+.ticket-perfume span {
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--loreal-gold);
+    letter-spacing: 2px;
+    font-family: 'Georgia', serif;
+}
+
+.ticket-stamp {
+    background: white;
+    padding: 6px 20px;
+    border-radius: 40px;
+    border: 2px solid #b59762;
+    font-size: 18px;
+    font-weight: 600;
+    color: #6a4e3a;
+    transform: rotate(3deg);
+    box-shadow: 0 2px 0 #8a7448;
+    position: relative;
+}
+
+.ticket-stamp::before {
+    content: '★';
+    position: absolute;
+    left: -15px;
+    top: -5px;
+    font-size: 22px;
+    color: #b59762;
+    transform: rotate(-15deg);
+}
+
+/* 车票主体网格 */
+.ticket-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 35px;
+    position: relative;
+    z-index: 2;
+}
+
+.ticket-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.ticket-field label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #5a4a3a;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.ticket-field label i {
+    color: var(--loreal-gold);
+    font-size: 16px;
+}
+
+.ticket-field input,
+.ticket-field select,
+.ticket-field textarea {
+    padding: 14px 18px;
+    border: 1px solid #d0b89c;
+    border-radius: 30px;
+    font-size: 16px;
+    background: #fffefc;
+    transition: all 0.3s;
+    font-family: 'Segoe UI', serif;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.ticket-field input:focus,
+.ticket-field select:focus,
+.ticket-field textarea:focus {
+    outline: none;
+    border-color: var(--loreal-gold);
+    box-shadow: 0 0 0 4px rgba(198,167,118,0.15), inset 0 2px 4px #fff3e0;
+}
+
+.ticket-field.full-width {
+    grid-column: span 2;
+}
+
+.ticket-field textarea {
+    resize: vertical;
+    min-height: 120px;
+    border-radius: 30px;
+}
+
+/* 香水滴装饰的字段 */
+.ticket-field.scented {
+    position: relative;
+}
+
+
+
+/* 底部邮戳+香水按钮 */
+.ticket-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    border-top: 2px dashed rgba(198,167,118,0.4);
+    padding-top: 25px;
+    position: relative;
+    z-index: 2;
+}
+
+.postmark {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(198,167,118,0.1);
+    padding: 10px 20px;
+    border-radius: 60px;
+    border: 1px dashed #b59762;
+}
+
+.postmark i {
+    font-size: 30px;
+    color: #8a7448;
+    margin-bottom: 5px;
+}
+
+.postmark span {
+    font-size: 14px;
+    color: #6a4e3a;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.btn-perfume {
+    background: linear-gradient(145deg, #fff8f0, #f0e4d5);
+    border: 2px solid var(--loreal-gold);
+    color: var(--loreal-gold);
+    padding: 15px 45px 15px 35px;
+    border-radius: 60px;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 6px 0 #ac8e62;
+}
+
+.btn-perfume i {
+    font-size: 26px;
+    transition: transform 0.3s;
+}
+
+.btn-perfume:hover {
+    background: var(--loreal-gold);
+    color: white;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 0 #7a5f3a;
+}
+
+.btn-perfume:hover i {
+    transform: translateX(8px) rotate(8deg);
+}
+
+
+
+.btn-perfume:hover::before {
+    opacity: 0.4;
+    animation: drip 1.5s infinite;
+}
+
+@keyframes drip {
+    0% { top: -15px; opacity: 0.4; }
+    70% { top: 30px; opacity: 0; }
+    100% { top: -15px; opacity: 0; }
+}
+
+/* 响应式调整 */
+@media (max-width: 992px) {
+    .ticket-body {
+        grid-template-columns: 1fr;
+    }
+    .ticket-field.full-width {
+        grid-column: span 1;
+    }
+    .ticket-footer {
+        flex-direction: column-reverse;
+        gap: 25px;
+    }
+    .ticket-expanded::before {
+        width: 100px;
+        height: 100px;
+        top: 10px;
+        right: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .ticket-folded {
+        flex-direction: column;
+        text-align: center;
+        padding: 25px 20px;
+    }
+    .folded-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .folded-text p {
+        justify-content: center;
+    }
+    .ticket-expanded {
+        padding: 25px 20px;
+    }
+    .ticket-header {
+        flex-direction: column;
+        align-items: start;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .btn-perfume {
+        width: 100%;
+        justify-content: center;
     }
 }
